@@ -71,3 +71,7 @@ final result: passed
 - Адаптирован предоставленный пользователем curved-menu: выезд справа, выпрямляющийся край, последовательное появление ссылок. CSS и существующий native Modal, без новых зависимостей.
 - В браузере проверены: 390×844 визуально; 320×568 без горизонтального скролла; Shift+Tab с кнопки закрытия на последний элемент; Escape и возврат фокуса; переход к #gallery с фокусом на секции; закрытие при переходе на desktop и снятие scroll lock.
 - Reduced motion: animation-name none, закрытие немедленное. Консоль без warning/error. Typecheck и build прошли.
+
+## Compact glass header
+
+Browser verified: transparent at scroll top with 106 px height; after navigation, fixed top=0 and 53 px height, backdrop blur 20 px. Mobile: 48 px header, 44 px menu button, no horizontal overflow at 390 px, menu opens and Escape closes it. Typecheck and build passed.

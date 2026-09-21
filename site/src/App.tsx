@@ -23,6 +23,13 @@ export function App() {
   useLuxuryMotion();
   const [lang, setLang] = useState<Language>(initialLanguage);
   const [menu, setMenu] = useState(false);
+  const [scrolled, setScrolled] = useState(() => window.scrollY > 60);
+  useEffect(() => {
+    const update = () => setScrolled(window.scrollY > 60);
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+    return () => window.removeEventListener('scroll', update);
+  }, []);
   const menuButton = useRef<HTMLButtonElement>(null);
   const [contact, setContact] = useState(false);
   const [floor, setFloor] = useState(false);
@@ -38,14 +45,17 @@ export function App() {
   return <>
     <MobileMenu open={menu} onClose={()=>setMenu(false)} lang={lang} />
     <a className="skip-link" href="#main">{t.skip}</a>
-    <section className="hero" aria-labelledby="hero-title">
-      <img className="hero-image" src="/images/hero.webp" alt="" fetchPriority="high" width="2200" height="1238" />
-      <div className="hero-shade" />
+    <div className={`glass-header${scrolled ? ' is-compact' : ''}`}>
       <header className="header">
         <a href="#" className="brand" aria-label="Drina Lux"><span>DRINA LUX</span><small>RIVERSIDE STAYS</small></a>
         <nav className="desktop-nav" aria-label={lang==='sr'?'Glavna navigacija':'Main navigation'}>{t.nav.map((label,i)=><a key={label} href={`#${navTargets[i]}`}>{label}</a>)}</nav>
         <div className="header-actions"><div className="languages" aria-label={t.languageLabel}>{(['sr','en'] as const).map(l=><button key={l} lang={l==='sr'?'sr-Latn':'en'} aria-label={l==='sr'?'Srpski':'English'} aria-pressed={lang===l} onClick={()=>setLang(l)}>{l.toUpperCase()}</button>)}</div><a className="header-booking" href={villa.contacts.booking} target="_blank" rel="noopener noreferrer">Booking <ArrowUpRight size={16} aria-hidden="true"/></a><button ref={menuButton} className="menu-toggle" aria-label={menu?t.closeMenu:t.menu} aria-expanded={menu} aria-controls="mobile-nav" onClick={()=>setMenu(!menu)}>{menu?<X size={25}/>:<List size={25}/>}</button></div>
       </header>
+    </div>
+    <section className="hero" aria-labelledby="hero-title">
+      <img className="hero-image" src="/images/hero.webp" alt="" fetchPriority="high" width="2200" height="1238" />
+      <div className="hero-shade" />
+
 
       <div className="hero-copy container"><p className="eyebrow light">{t.eyebrow}</p><h1 id="hero-title" data-reveal>{t.hero1}<br/><em>{t.hero2}</em></h1><p className="hero-description" data-reveal data-reveal-delay="120">{t.heroText}</p><div className="hero-buttons">{booking('button button-cream')}<a className="hero-secondary" href="#villa">{t.explore}<ArrowRight size={18} aria-hidden="true" /></a></div></div>
       <div className="hero-bottom container"><a href="#main"><ArrowDown size={16} aria-hidden="true"/>{t.scroll}</a><span>{t.heroNote}</span></div>

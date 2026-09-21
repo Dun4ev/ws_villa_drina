@@ -30,3 +30,6 @@ html{scroll-padding-top:calc(var(--compact-header) + 20px)}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.glass-header::before{background:#18332ef2}}
 @media(max-width:800px){:root{--header-space:85px;--compact-header:48px}.glass-header.is-compact .brand>span{font-size:25px}}
 @media(prefers-reduced-motion:reduce){.glass-header::before,.glass-header .header,.glass-header .brand>span,.glass-header .brand small{transition:none}}
+
+.footer{flex-wrap:wrap}.developer-credit{font-size:10px;color:var(--muted);min-height:44px;display:inline-flex;align-items:center;gap:3px}.developer-credit span{text-decoration:underline;text-underline-offset:3px}.developer-credit:hover{color:var(--green)}
+@media(max-width:600px){.footer .developer-credit{flex-basis:100%;font-size:10px;min-height:32px}}

@@ -1,0 +1,112 @@
+{
+  "generatedAt": "2026-09-21",
+  "processing": {
+    "photos": "WebP, quality 84, method 6, metadata stripped",
+    "maxLongEdge": 1600,
+    "heroMaxLongEdge": 2200
+  },
+  "assets": [
+    {
+      "output": "public/images/hero.webp",
+      "source": "../photo/1C06DD28-56C8-476C-8111-6B51674BE7D7_1_102_a.jpeg",
+      "dimensions": { "width": 2200, "height": 1238 },
+      "category": "villa"
+    },
+    {
+      "output": "public/images/villa.webp",
+      "source": "../photo/FDACBEE8-97B2-4C4C-8DE6-868C80F1237A_1_102_o.jpeg",
+      "dimensions": { "width": 1600, "height": 1200 },
+      "category": "villa"
+    },
+    {
+      "output": "public/images/pool.webp",
+      "source": "../photo/707966B6-FA7B-42EF-A1A9-009DA84F3290_1_102_o.jpeg",
+      "dimensions": { "width": 1600, "height": 1200 },
+      "category": "outdoors"
+    },
+    {
+      "output": "public/images/pool-sunset.webp",
+      "source": "../photo/A932F91A-3DE0-449C-A738-4B1911AAA447_1_102_o.jpeg",
+      "dimensions": { "width": 1600, "height": 1200 },
+      "category": "outdoors"
+    },
+    {
+      "output": "public/images/living.webp",
+      "source": "../photo/8F08D132-57E8-41C3-B036-8F90E8A87290_1_102_o.jpeg",
+      "dimensions": { "width": 1600, "height": 1200 },
+      "category": "interior"
+    },
+    {
+      "output": "public/images/living-river.webp",
+      "source": "../photo/7F020722-C7D7-4DBF-9066-12CDBD6D8275_1_102_o.jpeg",
+      "dimensions": { "width": 1600, "height": 1200 },
+      "category": "interior"
+    },
+    {
+      "output": "public/images/bedroom.webp",
+      "source": "../photo/CF760E36-9154-4FEC-B0B9-215815CEEA78_1_102_o.jpeg",
+      "dimensions": { "width": 1600, "height": 1200 },
+      "category": "interior"
+    },
+    {
+      "output": "public/images/bathroom.webp",
+      "source": "../photo/28C1950A-18A1-4491-A9F4-056F31453E02_1_102_o.jpeg",
+      "dimensions": { "width": 1200, "height": 1600 },
+      "category": "interior"
+    },
+    {
+      "output": "public/images/bbq.webp",
+      "source": "../photo/9589D1E8-7E53-4D69-9718-E780525B2426_1_102_o.jpeg",
+      "dimensions": { "width": 1600, "height": 1200 },
+      "category": "outdoors"
+    },
+    {
+      "output": "public/images/terrace.webp",
+      "source": "../photo/A4A7AB7D-3B46-40C5-A16D-5585EE35F907_1_102_o.jpeg",
+      "dimensions": { "width": 1600, "height": 1200 },
+      "category": "outdoors"
+    },
+    {
+      "output": "public/images/river-sunset.webp",
+      "source": "../photo/808CFC9C-1C65-4A7A-A1D1-83CD1E739932_1_102_o.jpeg",
+      "dimensions": { "width": 1600, "height": 1200 },
+      "category": "river"
+    },
+    {
+      "output": "public/images/river.webp",
+      "source": "../photo/279A625B-2DA7-4649-B5AA-98B83E5F3E35_1_102_o.jpeg",
+      "dimensions": { "width": 1600, "height": 1200 },
+      "category": "river"
+    },
+    {
+      "output": "public/images/river-panorama.webp",
+      "source": "../photo/E3897EC8-07A5-4EB0-8498-23D7994D0B76_4_5005_c.jpeg",
+      "dimensions": { "width": 1600, "height": 469 },
+      "category": "river"
+    },
+    {
+      "output": "public/images/garden.webp",
+      "source": "../photo/F1D47BC0-7637-4B49-A77B-EDE948042031_1_102_o.jpeg",
+      "dimensions": { "width": 1600, "height": 1200 },
+      "category": "outdoors"
+    },
+    {
+      "output": "public/images/exterior-sunset.webp",
+      "source": "../photo/9EB79057-38A6-4FFF-90D3-173AA24B42EE_1_102_o.jpeg",
+      "dimensions": { "width": 1600, "height": 1200 },
+      "category": "villa"
+    },
+    {
+      "output": "public/images/pool-loungers.webp",
+      "source": "../photo/5FE7D395-6BF9-4E86-8DF0-57F993300831_1_102_o.jpeg",
+      "dimensions": { "width": 1600, "height": 1200 },
+      "category": "outdoors"
+    },
+    {
+      "output": "public/images/floor-plan.png",
+      "source": "../references/floorplans/drina-lux-floor-plan.png",
+      "dimensions": { "width": 1179, "height": 1009 },
+      "category": "floor-plan"
+    }
+  ]
+}

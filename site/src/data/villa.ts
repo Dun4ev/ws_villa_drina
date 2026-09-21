@@ -1,0 +1,51 @@
+export type Language = 'sr' | 'en';
+export type Localized = Record<Language, string>;
+export const villa = {
+  id: 'drina-lux', name: 'Drina Lux',
+  contacts: { booking: 'https://www.booking.com/hotel/rs/vikendica-drina-lux.html', phone: '+38169632641', email: 'drinalux@gmail.com', instagram: 'https://www.instagram.com/drinalux_/' },
+  map: 'https://maps.app.goo.gl/c5vYcvp8BS4NURNV8',
+  rooms: [
+    { name: { sr: 'Spavaća soba', en: 'Bedroom' }, area: '15 m²' },
+    { name: { sr: 'Spavaća soba', en: 'Bedroom' }, area: '11 m²' },
+    { name: { sr: 'Spavaća soba', en: 'Bedroom' }, area: '9.9 m²' },
+    { name: { sr: 'Dnevni boravak', en: 'Living room' }, area: '20 m²' },
+  ],
+};
+export const copy = {
+  sr: {
+    title: 'Drina Lux | Odmor na obali Drine', description: 'Vila sa privatnim bazenom na obali Drine, kod Loznice. Pogledajte fotografije i planirajte svoj boravak.',
+    skip: 'Pređi na sadržaj', nav: ['Vila', 'Galerija', 'Doživljaj', 'Kontakt'], menu: 'Otvori meni', closeMenu: 'Zatvori meni',
+    booking: 'Pogledaj na Booking-u', contact: 'Kontaktiraj domaćina', shortBooking: 'Booking',
+    eyebrow: 'ŠOR · LOZNICA · SRBIJA', hero1: 'Vaše mesto', hero2: 'pored Drine.',
+    heroText: 'Jutra uz reku. Popodneva pored bazena.\nVreme samo za vas.', explore: 'Upoznajte vilu', heroNote: 'Privatna vila. Vaš ritam.', scroll: 'Otkrijte više',
+    introLabel: 'DOBRO DOŠLI U DRINA LUX', intro1: 'Blizu prirode.', intro2: 'Daleko od žurbe.',
+    introText: 'Kuća otvorena prema dvorištu, bazen na nekoliko koraka i Drina odmah iza. Jednostavno mesto za duge razgovore, zajedničke obroke i dane bez rasporeda.',
+    riverCaption: 'Drina, u svom ritmu.', villaLabel: 'VAŠ BORAVAK', villaText: 'Tri spavaće sobe, prostran dnevni boravak i terasa koja vas vodi napolje. Okupite svoje ljude i napravite mesta za odmor.',
+    facts: ['Spavaće sobe', 'Kupatilo', 'Privatni bazen', 'Uz reku'], photos: 'Pogledajte fotografije',
+    galleryLabel: 'POGLEDAJTE BLIŽE', galleryTitle: 'Prostor za vaše trenutke.', galleryText: 'Od prve jutarnje kafe do poslednjih zraka sunca.',
+    layoutLabel: 'UNUTRAŠNJI PROSTOR', layoutTitle: 'Mesto za svakoga.', layoutText: 'Tri odvojene spavaće sobe i zajednički prostor za druženje. Pogledajte kako su prostorije povezane.',
+    layoutNote: 'Preliminarni plan. Raspored i označene površine proverite sa domaćinom pre rezervacije.', layoutAction: 'Uvećajte plan', layoutAlt: 'Preliminarni plan vile sa tri spavaće sobe, dnevnim boravkom, kuhinjom i kupatilom',
+    experienceLabel: 'DANI PO VAŠOJ MERI', experienceTitle: 'Malo planova. Mnogo uživanja.',
+    experiences: [{title:'Samo još jedan krug.',text:'Popodne uz bazen, uz knjigu ili u dobrom društvu.'},{title:'Za istim stolom.',text:'Natkriveni prostor za roštilj i obroke na otvorenom.'},{title:'Dočekajte zalazak.',text:'Siđite do reke i pustite da dan polako prođe.'}],
+    amenitiesTitle: 'Sve na svom mestu.', amenities: ['Privatni bazen', 'Opremljena kuhinja', 'Prostor za roštilj', 'Privatni parking', 'Wi-Fi', 'Klima-uređaj'],
+    locationLabel: 'NA OBALI DRINE', locationTitle: 'Vaš mali beg.\nKod Loznice.', locationText: 'Drina Lux se nalazi u Šoru, u okolini Loznice. Pogledajte lokaciju i dogovorite detalje dolaska sa domaćinom.', map:'Pogledajte na mapi',
+    bookingLabel:'SLEDEĆI ODMOR POČINJE OVDE', bookingTitle:'Vidimo se na Drini.', bookingText:'Izaberite datume na Booking-u ili se obratite domaćinu.', footer:'Odmor na obali Drine.', rights:'Drina Lux', languageLabel:'Jezik sajta',
+  },
+  en: {
+    title: 'Drina Lux | A private stay by the Drina', description: 'A villa with a private pool on the banks of the Drina, near Loznica. Explore the photos and plan your stay.',
+    skip: 'Skip to content', nav: ['The villa', 'Gallery', 'Experience', 'Contact'], menu:'Open menu', closeMenu:'Close menu',
+    booking:'View on Booking', contact:'Contact the host', shortBooking:'Booking',
+    eyebrow:'ŠOR · LOZNICA · SERBIA', hero1:'Your place', hero2:'by the Drina.', heroText:'Mornings by the river. Afternoons by the pool.\nTime that is entirely yours.', explore:'Explore the villa', heroNote:'A private villa. Your own pace.', scroll:'Discover more',
+    introLabel:'WELCOME TO DRINA LUX', intro1:'Closer to nature.', intro2:'Further from the rush.', introText:'A house that opens onto the garden, a pool a few steps away, and the Drina just beyond. A place for long conversations, shared meals and days without a schedule.',
+    riverCaption:'The Drina, at its own pace.', villaLabel:'YOUR STAY', villaText:'Three bedrooms, a generous living room and a terrace that draws you outside. Bring your favourite people and make room for a slower day.',
+    facts:['Bedrooms','Bathroom','Private pool','Riverside'], photos:'Explore the gallery',
+    galleryLabel:'TAKE A CLOSER LOOK', galleryTitle:'Room for your kind of moments.', galleryText:'From the first coffee to the last light of the day.',
+    layoutLabel:'INSIDE THE VILLA', layoutTitle:'A place for everyone.', layoutText:'Three separate bedrooms and a shared space to come together. Take a closer look at how the rooms connect.',
+    layoutNote:'Preliminary plan. Please confirm the layout and indicated room areas with the host before booking.', layoutAction:'Enlarge floor plan', layoutAlt:'Preliminary villa floor plan with three bedrooms, living room, kitchen and bathroom',
+    experienceLabel:'DAYS AT YOUR OWN PACE', experienceTitle:'Fewer plans. More moments.',
+    experiences:[{title:'One more dip.',text:'An afternoon by the pool, with a book or good company.'},{title:'Around the same table.',text:'A covered barbecue pavilion for long meals outdoors.'},{title:'Stay for the sunset.',text:'Wander down to the river and let the day slow down.'}],
+    amenitiesTitle:'The comforts of a good stay.', amenities:['Private pool','Equipped kitchen','Barbecue pavilion','Private parking','Wi-Fi','Air conditioning'],
+    locationLabel:'ON THE BANKS OF THE DRINA', locationTitle:'A little escape.\nNear Loznica.', locationText:'You will find Drina Lux in Šor, near Loznica. See the location and arrange your arrival details with the host.', map:'View on the map',
+    bookingLabel:'YOUR NEXT SLOW DAY STARTS HERE', bookingTitle:'See you by the Drina.', bookingText:'Choose your dates on Booking or get in touch with the host.', footer:'A slower stay by the Drina.', rights:'Drina Lux',languageLabel:'Website language',
+  },
+};

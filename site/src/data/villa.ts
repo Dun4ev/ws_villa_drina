@@ -8,7 +8,7 @@ export const villa = {
     { name: { sr: 'Spavaća soba', en: 'Bedroom' }, area: '15 m²' },
     { name: { sr: 'Spavaća soba', en: 'Bedroom' }, area: '11 m²' },
     { name: { sr: 'Spavaća soba', en: 'Bedroom' }, area: '9.9 m²' },
-    { name: { sr: 'Dnevni boravak', en: 'Living room' }, area: '20 m²' },
+    { name: { sr: 'Dnevni boravak', en: 'Living room' }, area: '21 m²' },
   ],
 };
 export const copy = {

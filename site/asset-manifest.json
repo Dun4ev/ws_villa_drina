@@ -105,8 +105,10 @@
     {
       "output": "public/images/floor-plan.png",
       "source": "../references/floorplans/drina-lux-floor-plan.png",
-      "dimensions": { "width": 1179, "height": 1009 },
-      "category": "floor-plan"
+      "dimensions": { "width": 1179, "height": 966 },
+      "category": "floor-plan",
+      "updatedAt": "2026-09-22",
+      "sha256": "8c2d1e954d11b0aed04df1213bf1296dc19c355323e27676f1136c9d59740976"
     }
   ]
 }

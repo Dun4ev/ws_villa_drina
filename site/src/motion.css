@@ -1,0 +1,57 @@
+.hero {
+  overflow: hidden;
+  overflow: clip;
+}
+
+.intro-image,
+.villa-image,
+.experience-grid article,
+.location-image {
+  overflow: hidden;
+  overflow: clip;
+}
+
+.button-cream {
+  border-color: #b8a383;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-image {
+    animation: luxury-hero-settle 1400ms cubic-bezier(.22, 1, .36, 1) both;
+    transform-origin: 50% 50%;
+  }
+
+  @keyframes luxury-hero-settle {
+    from {
+      transform: scale(1.025);
+    }
+
+    to {
+      transform: scale(1);
+    }
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .intro-image img,
+  .villa-image > img,
+  .experience-grid article > img,
+  .location-image img {
+    transition: transform 700ms cubic-bezier(.22, 1, .36, 1);
+  }
+
+  .intro-image:hover img,
+  .villa-image:hover > img,
+  .experience-grid article:hover > img,
+  .location-image:hover img {
+    transform: scale(1.025);
+  }
+
+  .button svg {
+    transition: transform 250ms cubic-bezier(.22, 1, .36, 1);
+  }
+
+  .button:hover svg {
+    transform: translateX(2px);
+  }
+}

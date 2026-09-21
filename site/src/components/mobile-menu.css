@@ -1,0 +1,19 @@
+.interaction-modal.curved-menu{position:fixed;inset:0;margin:0 0 0 auto;width:min(100%,480px);max-width:100%;height:100dvh;max-height:100dvh;padding:0;border:0;background:transparent;color:var(--green);overflow:visible;box-shadow:none}
+.curved-menu::backdrop{background:#10271fcc;animation:menu-backdrop-in 540ms ease both}
+.curved-menu-panel{position:relative;isolation:isolate;display:flex;flex-direction:column;height:100%;padding:22px 28px max(24px,env(safe-area-inset-bottom));background:var(--cream);animation:menu-slide-in 650ms cubic-bezier(.76,0,.24,1) both}
+.curved-menu-panel::before{content:'';position:absolute;z-index:-1;right:calc(100% - 1px);top:0;width:100px;height:100%;background:var(--cream);border-radius:100% 0 0 100%;transform-origin:right center;animation:menu-curve-in 750ms cubic-bezier(.76,0,.24,1) both}
+.curved-menu-top{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:30px;border-bottom:1px solid var(--rule)}
+.curved-menu-brand{font-family:'Cormorant Garamond Variable',serif;font-size:30px;line-height:1;letter-spacing:.03em}.curved-menu-brand small{display:block;font-family:'Manrope Variable',sans-serif;font-size:8px;letter-spacing:.28em;margin-top:10px}
+.curved-menu-close{display:grid;place-items:center;width:44px;height:44px;background:none;border:0;color:inherit;flex-shrink:0}
+.curved-menu nav{margin:24px 0}.curved-menu nav a{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px;border-bottom:1px solid var(--rule);font-family:'Cormorant Garamond Variable',serif;font-size:clamp(36px,10vw,48px);line-height:1.15;animation:menu-link-in 550ms cubic-bezier(.22,1,.36,1) both;animation-delay:calc(160ms + var(--item)*55ms)}
+.curved-menu-footer{margin-top:auto;padding-top:20px}.curved-menu-footer p{font-size:10px;letter-spacing:.12em;margin-bottom:20px}.curved-menu-footer .button{width:100%;justify-content:space-between}.curved-menu-instagram{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;margin-top:10px;font-size:11px}
+.curved-menu.is-closing .curved-menu-panel{animation:menu-slide-out 540ms cubic-bezier(.76,0,.24,1) both}.curved-menu.is-closing .curved-menu-panel::before{animation:menu-curve-out 540ms cubic-bezier(.76,0,.24,1) both}.curved-menu.is-closing::backdrop{animation:menu-backdrop-out 540ms ease both}
+@keyframes menu-slide-in{from{transform:translateX(calc(100% + 100px))}to{transform:translateX(0)}}
+@keyframes menu-slide-out{from{transform:translateX(0)}to{transform:translateX(calc(100% + 100px))}}
+@keyframes menu-curve-in{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+@keyframes menu-curve-out{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes menu-link-in{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:translateX(0)}}
+@keyframes menu-backdrop-in{from{opacity:0}to{opacity:1}}
+@keyframes menu-backdrop-out{from{opacity:1}to{opacity:0}}
+@media(max-height:650px){.curved-menu-panel{padding-top:12px;padding-bottom:12px;overflow-y:auto}.curved-menu-top{padding-bottom:12px}.curved-menu nav{margin:10px 0}.curved-menu nav a{min-height:56px;font-size:34px}.curved-menu-footer{padding-top:8px}.curved-menu-footer p{margin-bottom:10px}}
+@media(prefers-reduced-motion:reduce){.curved-menu::backdrop,.curved-menu-panel,.curved-menu-panel::before,.curved-menu nav a{animation:none!important}.curved-menu-panel::before{transform:scaleX(0)}}

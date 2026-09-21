@@ -11,3 +11,5 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 ## Confirmed visual refinement, 2026-09-22
 
 The user wants a little more luxury through restrained effects. Preserve the current typography, colors and layout. Use the 21st.dev Blur Fade pattern sparingly: once-only entrances, a subtle hero settle and quiet image/button hover feedback. Respect reduced motion, never hide content permanently, and do not replay on language change or scrolling back.
+
+Mobile menu refinement: the user supplied a curved-menu reference. Adapt its sliding curved edge and staggered links to the existing cream/green typography. Preserve native dialog focus containment, Escape, scroll lock, section navigation and reduced motion; no Next.js/Tailwind migration is needed.

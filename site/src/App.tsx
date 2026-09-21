@@ -6,6 +6,7 @@ import '@fontsource-variable/manrope';
 import { Gallery } from './components/Gallery';
 import { ContactDialog } from './components/ContactDialog';
 import { Modal } from './components/Modal';
+import { MobileMenu } from './components/MobileMenu';
 import { copy, villa, type Language } from './data/villa';
 import { photos } from './data/photos';
 import { useLuxuryMotion } from './hooks/useLuxuryMotion';
@@ -33,12 +34,9 @@ export function App() {
     try { localStorage.setItem('drina-language', lang); } catch { /* Private browsing still works. */ }
     const url = new URL(window.location.href); url.searchParams.set('lang',lang); window.history.replaceState(null,'',url);
   }, [lang, t]);
-  useEffect(() => {
-    const close = (e: KeyboardEvent) => { if(e.key === 'Escape' && menu) { setMenu(false); menuButton.current?.focus(); } };
-    window.addEventListener('keydown',close); return () => window.removeEventListener('keydown',close);
-  }, [menu]);
   const booking = (className = 'button button-dark') => <a className={className} href={villa.contacts.booking} target="_blank" rel="noopener noreferrer">{t.booking}<ArrowUpRight size={18} aria-hidden="true" /></a>;
   return <>
+    <MobileMenu open={menu} onClose={()=>setMenu(false)} lang={lang} />
     <a className="skip-link" href="#main">{t.skip}</a>
     <section className="hero" aria-labelledby="hero-title">
       <img className="hero-image" src="/images/hero.webp" alt="" fetchPriority="high" width="2200" height="1238" />
@@ -48,7 +46,7 @@ export function App() {
         <nav className="desktop-nav" aria-label={lang==='sr'?'Glavna navigacija':'Main navigation'}>{t.nav.map((label,i)=><a key={label} href={`#${navTargets[i]}`}>{label}</a>)}</nav>
         <div className="header-actions"><div className="languages" aria-label={t.languageLabel}>{(['sr','en'] as const).map(l=><button key={l} lang={l==='sr'?'sr-Latn':'en'} aria-label={l==='sr'?'Srpski':'English'} aria-pressed={lang===l} onClick={()=>setLang(l)}>{l.toUpperCase()}</button>)}</div><a className="header-booking" href={villa.contacts.booking} target="_blank" rel="noopener noreferrer">Booking <ArrowUpRight size={16} aria-hidden="true"/></a><button ref={menuButton} className="menu-toggle" aria-label={menu?t.closeMenu:t.menu} aria-expanded={menu} aria-controls="mobile-nav" onClick={()=>setMenu(!menu)}>{menu?<X size={25}/>:<List size={25}/>}</button></div>
       </header>
-      {menu && <nav id="mobile-nav" className="mobile-nav" aria-label={lang==='sr'?'Mobilna navigacija':'Mobile navigation'}>{t.nav.map((label,i)=><a key={label} href={`#${navTargets[i]}`} onClick={()=>setMenu(false)}>{label}<ArrowUpRight size={20}/></a>)}</nav>}
+
       <div className="hero-copy container"><p className="eyebrow light">{t.eyebrow}</p><h1 id="hero-title" data-reveal>{t.hero1}<br/><em>{t.hero2}</em></h1><p className="hero-description" data-reveal data-reveal-delay="120">{t.heroText}</p><div className="hero-buttons">{booking('button button-cream')}<a className="hero-secondary" href="#villa">{t.explore}<ArrowRight size={18} aria-hidden="true" /></a></div></div>
       <div className="hero-bottom container"><a href="#main"><ArrowDown size={16} aria-hidden="true"/>{t.scroll}</a><span>{t.heroNote}</span></div>
     </section>

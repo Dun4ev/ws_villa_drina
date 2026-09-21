@@ -65,3 +65,9 @@ final result: passed
 - Ширины 390 и 320 px: scrollWidth равен innerWidth. В консоли нет warning/error.
 - Финальные typecheck и production build прошли. Временные настройки viewport и reduced motion сброшены.
 - Локальные снимки: qa/refinement-mobile.png, qa/refinement-floor-plan.png (не включены в Git).
+
+## Мобильное curved menu, 2026-09-22
+
+- Адаптирован предоставленный пользователем curved-menu: выезд справа, выпрямляющийся край, последовательное появление ссылок. CSS и существующий native Modal, без новых зависимостей.
+- В браузере проверены: 390×844 визуально; 320×568 без горизонтального скролла; Shift+Tab с кнопки закрытия на последний элемент; Escape и возврат фокуса; переход к #gallery с фокусом на секции; закрытие при переходе на desktop и снятие scroll lock.
+- Reduced motion: animation-name none, закрытие немедленное. Консоль без warning/error. Typecheck и build прошли.

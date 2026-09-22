@@ -1,0 +1,294 @@
+/* Layout refinements for the Idila page. Header, navigation and dialogs live in idila.css. */
+.idila-page {
+  --idila-layout-width: 1440px;
+  --idila-layout-gutter: clamp(28px, 5vw, 72px);
+  --idila-section-space: clamp(72px, 7vw, 96px);
+}
+
+.idila-hero,
+.idila-facts,
+.idila-video {
+  max-width: var(--idila-layout-width);
+}
+
+.idila-hero {
+  grid-template-columns: minmax(350px, 35%) minmax(0, 1fr);
+  min-height: clamp(650px, 52vw, 720px);
+}
+
+.idila-hero__copy {
+  padding: clamp(76px, 7vw, 96px) var(--idila-layout-gutter) 36px;
+}
+
+.idila-page .idila-hero__text {
+  margin-top: 28px;
+}
+
+.idila-hero__visual img {
+  object-position: center 52%;
+}
+
+.idila-facts {
+  padding-inline: var(--idila-layout-gutter);
+}
+
+.idila-story,
+.idila-gallery-section,
+.idila-location,
+.idila-contact,
+.idila-footer {
+  max-width: var(--idila-layout-width);
+}
+
+.idila-story {
+  grid-template-columns: minmax(280px, .9fr) minmax(240px, .95fr) minmax(240px, .95fr);
+  align-items: center;
+  gap: clamp(16px, 1.8vw, 26px);
+  padding: var(--idila-section-space) var(--idila-layout-gutter);
+}
+
+.idila-story__copy {
+  padding: 24px clamp(18px, 3vw, 42px) 24px 0;
+}
+
+.idila-story__image--tall,
+.idila-story__image--wide {
+  width: 100%;
+  height: clamp(440px, 37vw, 520px);
+}
+
+.idila-story__image--tall img {
+  object-position: center 48%;
+}
+
+.idila-story__image--wide img {
+  object-position: center;
+}
+
+.idila-gallery-section {
+  padding: var(--idila-section-space) var(--idila-layout-gutter) calc(var(--idila-section-space) + 8px);
+}
+
+.idila-section-heading {
+  margin-bottom: clamp(34px, 4vw, 46px);
+}
+
+.idila-gallery {
+  grid-template-columns: 1.05fr .95fr .95fr;
+  grid-template-rows: repeat(2, clamp(230px, 20vw, 280px));
+  gap: clamp(12px, 1.4vw, 18px);
+}
+
+.idila-gallery__item img {
+  object-position: center;
+}
+
+.idila-location {
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  border-top: 1px solid var(--idila-rule);
+}
+
+.idila-location > figure {
+  position: relative;
+  min-height: 520px;
+  height: auto;
+}
+
+.idila-location > figure img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  object-position: center 52%;
+}
+
+.idila-location__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px clamp(40px, 5vw, 72px);
+}
+
+.idila-page .idila-location h2{font-size:clamp(46px,4.3vw,64px);line-height:1.02}
+.idila-location .idila-text-link{align-self:flex-start}
+
+.idila-video {
+  min-height: clamp(390px, 34vw, 440px);
+}
+
+.idila-video__copy {
+  width: min(calc(100% - (2 * var(--idila-layout-gutter))), 1296px);
+}
+
+.idila-contact {
+  gap: clamp(44px, 6vw, 76px);
+  padding: clamp(62px, 6vw, 78px) var(--idila-layout-gutter);
+}
+
+.idila-contact__actions {
+  padding-left: clamp(42px, 5vw, 70px);
+}
+
+.idila-contact__actions a,
+.idila-contact__actions span {
+  min-width: 0;
+}
+
+.idila-contact__actions span {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 1180px) {
+  .idila-page {
+    --idila-layout-gutter: clamp(36px, 5vw, 48px);
+    --idila-section-space: clamp(68px, 8vw, 82px);
+  }
+
+  .idila-story,
+  .idila-gallery-section,
+  .idila-contact,
+  .idila-footer {
+    padding-inline: var(--idila-layout-gutter);
+  }
+}
+
+@media (max-width: 900px) {
+  .idila-hero {
+    grid-template-columns: minmax(310px, 42%) minmax(0, 1fr);
+    min-height: 620px;
+  }
+
+  .idila-hero__copy {
+    padding: 68px 34px 30px;
+  }
+
+  .idila-story {
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+
+  .idila-story__copy {
+    padding: 0 15% 18px 0;
+  }
+
+  .idila-story__image--tall,
+  .idila-story__image--wide {
+    height: clamp(390px, 51vw, 450px);
+  }
+
+  .idila-location > figure {
+    height: auto;
+    min-height: 500px;
+  }
+
+  .idila-location__copy {
+    padding: 68px 40px;
+  }
+}
+
+@media (max-width: 680px) {
+  .idila-page {
+    --idila-layout-gutter: clamp(20px, 6.5vw, 28px);
+    --idila-section-space: 58px;
+  }
+
+  .idila-hero {
+    min-height: 0;
+  }
+
+  .idila-hero__visual {
+    height: clamp(330px, 105vw, 420px);
+  }
+
+  .idila-hero__visual img {
+    object-position: center 50%;
+  }
+
+  .idila-hero__copy {
+    padding: 46px var(--idila-layout-gutter) 42px;
+  }
+
+  .idila-page .idila-hero__text {
+    margin-top: 23px;
+  }
+
+  .idila-facts {
+    padding-inline: var(--idila-layout-gutter);
+  }
+
+  .idila-story,
+  .idila-gallery-section,
+  .idila-contact,
+  .idila-footer {
+    padding-inline: var(--idila-layout-gutter);
+  }
+
+  .idila-story {
+    padding-block: var(--idila-section-space);
+    gap: 14px;
+  }
+
+  .idila-story__copy {
+    padding: 0 6px 20px;
+  }
+
+  .idila-story__image--tall,
+  .idila-story__image--wide {
+    height: auto;
+  }
+
+  .idila-story__image--tall {
+    aspect-ratio: 4 / 5;
+  }
+
+  .idila-story__image--wide {
+    aspect-ratio: 1 / 1;
+  }
+
+  .idila-gallery-section {
+    padding-block: var(--idila-section-space) calc(var(--idila-section-space) + 4px);
+  }
+
+  .idila-gallery {
+    gap: 12px;
+    padding-bottom: 8px;
+  }
+
+  .idila-gallery__item {
+    flex-basis: min(86%, 390px);
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .idila-location > figure img {position:static}
+
+  .idila-gallery__item--1 {
+    aspect-ratio: 4 / 5;
+  }
+
+  .idila-location > figure {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  .idila-location__copy {
+    padding: var(--idila-section-space) var(--idila-layout-gutter) calc(var(--idila-section-space) + 4px);
+  }
+
+  .idila-video {
+    min-height: 390px;
+  }
+
+  .idila-video__copy {
+    width: calc(100% - (2 * var(--idila-layout-gutter)));
+  }
+
+  .idila-contact {
+    padding-block: var(--idila-section-space);
+  }
+
+  .idila-contact__actions {
+    padding-left: 0;
+  }
+}

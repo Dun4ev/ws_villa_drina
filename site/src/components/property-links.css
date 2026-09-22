@@ -1,0 +1,9 @@
+.property-links{display:flex;align-items:center;gap:10px;white-space:nowrap;font-family:'Manrope Variable',sans-serif;font-size:10px;letter-spacing:.02em}
+.property-links a{display:inline-flex;align-items:center;min-height:44px;opacity:.75}
+.property-links a[aria-current=page]{opacity:1;text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
+.property-links a:hover{opacity:1}.property-links>span{opacity:.35}
+.glass-header .desktop-nav{gap:18px}.glass-header .header{gap:18px}
+.glass-header .header>.property-links{border-left:1px solid #ffffff40;padding-left:18px}
+.curved-menu-panel>.property-links{padding-top:12px;border-bottom:1px solid var(--rule);font-size:12px;gap:16px}
+@media(min-width:801px) and (max-width:1200px){.glass-header .header{width:calc(100% - 40px);gap:12px}.glass-header .desktop-nav{gap:12px}.glass-header .header>.property-links{padding-left:12px;gap:7px;font-size:9px}.glass-header .header-booking{display:none}.glass-header .brand>span{font-size:27px}}
+@media(max-width:800px){.glass-header .header>.property-links{display:none}}

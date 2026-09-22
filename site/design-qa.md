@@ -75,3 +75,44 @@ final result: passed
 ## Compact glass header
 
 Browser verified: transparent at scroll top with 106 px height; after navigation, fixed top=0 and 53 px height, backdrop blur 20 px. Mobile: 48 px header, 44 px menu button, no horizontal overflow at 390 px, menu opens and Escape closes it. Typecheck and build passed.
+
+## Idila and reciprocal navigation, 2026-09-22
+
+- Added `/idila/` and reciprocal property links in both desktop headers and mobile menus. English persists across actual navigation in both directions. Direct route load/reload verified.
+- Idila reviewed at 1440, 1024, 390 and 320 CSS px; no document horizontal overflow. Drina header also checked at 820 px with no overlap or overflow.
+- Idila mobile menu property links tested in both directions. Tablet menu available at 1024 px. Section link to Tara closes dialog, unlocks body scroll and reaches target.
+- Gallery opened, next photo advanced counter, Escape closed dialog and restored initiating button focus. Bedroom image loaded at original 700 px width. Real source images load; no browser warnings/errors in checked final scenarios.
+- `npm run typecheck`, `npm run build`, `npm run test:sites` passed (4 tests). `git diff --check` passed.
+- Video, phone, email and map destinations inspected; no message or call sent. External video playback and published hosting not verified. Local preview only.
+
+## Idila refinement and motion parity, 2026-09-22
+
+final result: passed
+
+### Visual target and evidence
+
+Target: `../references/idila-tara/concept-v1.png` (941 x 1672), with the user's later instructions to harmonize sections, remove Tara.rs logos and transfer Drina effects. Reference and final `qa/idila-refinement-reference-width.png` (941 x 850 CSS/PNG, 1x) were opened together in a single comparison input. This is a focused top-region comparison; the source is a full-page mock. At this width the existing responsive menu intentionally collapses, unlike the static mock. Additional rendered evidence: `qa/idila-refinement-desktop.png` and `qa/idila-refinement-story.png` (1440 x 1000), `qa/idila-refinement-mobile.png` (390 x 844). The latter shows layout before the final cleaned-image substitution. Final clean JPEG imagery was also inspected in the browser.
+
+### Findings and corrections
+
+- P2 fixed: hero paragraph margin lost to `.idila-page p`. More specific rule restores separation from the divider. Final 941 px comparison shows the gap.
+- P2 fixed: fixed-height location image left an empty 185 px region below it. Image now stretches to the content height; browser measured both sides at 616.3 px after correction and the revised screenshot was visually inspected.
+- P2 fixed per user: inconsistent section extents and oversized crops. Shared 1440 px maximum and common gutters/section rhythm applied; story images now balanced.
+- P2 fixed per user: static header/no motion parity. Browser measured header 106 px at top, 53 px on desktop scroll; 85/48 px on mobile. Compact backdrop blur 20 px, fixed top=0.
+- P2 fixed per user: logos visible in source photos. Five image_gen edited copies were visually inspected; page uses optimized clean JPEG derivatives. Original files retained.
+
+### Required surfaces
+
+- Typography: existing Cormorant/Manrope retained; headline wraps and functional text readable. Location headline reduced to balance adjacent photo.
+- Rhythm: consistent widths, balanced story columns and equal-height location columns; no horizontal document overflow at checked 320, 390, 941 and 1440 px.
+- Tokens: cream/rust identity retained; compact dark glass uses light text and visible controls.
+- Images: source-derived scenes and edited results inspected; watermark absent, no stretching. Small generative texture/detail differences remain a documented limitation in `idila-image-edits.md`, not pixel-exact source preservation.
+- Content: SR/EN behavior and factual property copy retained; no new claims, prices or availability added.
+
+### Behavior and technical checks
+
+- Mobile menu animates in/out with curved edge and staggered links; Tara link closes it, unlocks scroll and focuses #tara. Escape works.
+- Shared once-only useLuxuryMotion hook, hero settle and restrained hover transitions added.
+- Emulated reduced motion: menu/hero animation-name none, header transition 0s; override removed afterward.
+- Final narrow-screen menu/EN and clean hero load verified; browser warning/error log empty.
+- Typecheck and production build passed; git diff --check passed. No external messages, calls or deployment performed.

@@ -15,3 +15,11 @@ The user wants a little more luxury through restrained effects. Preserve the cur
 Mobile menu refinement: the user supplied a curved-menu reference. Adapt its sliding curved edge and staggered links to the existing cream/green typography. Preserve native dialog focus containment, Escape, scroll lock, section navigation and reduced motion; no Next.js/Tailwind migration is needed.
 
 Confirmed header: keep transparency at the top and fix navigation while scrolling. After scrolling, shrink from 106 to 53 px (mobile 85 to 48 px to preserve touch targets), with restrained dark translucent glass and backdrop blur. Do not replace it with opaque cream.
+
+## Second property, 2026-09-22
+
+User approved the Idila mock in `../references/idila-tara/concept-v1.png` and requested implementation as a separate `/idila/` page with reciprocal links in both top menus. Preserve Drina styling; Idila uses its own cream/charcoal/rust identity and real Tara.rs photos. Preserve SR/EN across property links.
+
+## Idila refinement, 2026-09-22
+
+User requested the same shrinking glass header and restrained effects as Drina: fixed 106/53 px desktop, 85/48 px mobile; once-only reveals, quiet photo/button hover, curved animated mobile menu, reduced-motion support. Preserve cream/rust identity while harmonizing section widths, spacing and image proportions. User explicitly requested removing TARA.RS logos from working photo copies; preserve originals and record edited asset provenance.

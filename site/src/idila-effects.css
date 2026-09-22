@@ -1,0 +1,40 @@
+.idila-page{--idila-header-height:106px;padding-top:var(--idila-header-height)}
+.idila-page .idila-header{position:fixed;inset:0 0 auto;height:var(--idila-header-height);background:transparent;isolation:isolate;transition:height .4s cubic-bezier(.22,1,.36,1),color .3s,border-color .3s}
+.idila-header::before{content:'';position:absolute;inset:0;z-index:-1;background:#242820c7;backdrop-filter:blur(20px) saturate(145%);-webkit-backdrop-filter:blur(20px) saturate(145%);box-shadow:inset 0 1px 0 #ffffff30,0 4px 20px #071c1614;opacity:0;transition:opacity .35s ease}
+.idila-page .idila-header.is-compact{height:53px;color:#f8f4ec;border-bottom-color:#ffffff33}
+.idila-header.is-compact::before{opacity:1}
+.idila-header .idila-brand b,.idila-header .idila-brand svg{transition:font-size .4s cubic-bezier(.22,1,.36,1),width .4s,height .4s}
+.idila-header .idila-brand small{max-height:24px;opacity:1;overflow:hidden;transition:max-height .4s,opacity .2s}
+.idila-header.is-compact .idila-brand small{max-height:0;opacity:0}
+.idila-header.is-compact .idila-brand b{font-size:25px}
+.idila-header.is-compact .idila-brand svg{width:32px;height:32px}
+.idila-header .idila-header__cta{min-height:44px;padding-block:9px;transition:background .2s,color .2s,border-color .2s}
+.idila-header.is-compact .idila-header__cta{color:#f8f4ec;border-color:#ffffff70}
+.idila-header.is-compact .idila-nav a:hover{color:#dfb49c}
+.idila-header.is-compact .idila-menu-button{border-color:#ffffff60;color:inherit}
+.idila-header.is-compact .idila-languages button+button::before{color:inherit}
+.idila-location>figure{overflow:hidden}
+.idila-page dialog.idila-mobile-menu{overflow:visible;max-width:100%;box-shadow:none}
+.idila-mobile-menu__panel{position:relative;isolation:isolate}
+.idila-mobile-menu__panel::before{content:'';position:absolute;z-index:-1;right:calc(100% - 1px);top:0;width:100px;height:100%;background:var(--idila-paper);border-radius:100% 0 0 100%;transform-origin:right center;transform:scaleX(0)}
+@media(prefers-reduced-motion:no-preference){
+ .idila-hero__visual img{animation:luxury-hero-settle 1400ms cubic-bezier(.22,1,.36,1) both}
+ .idila-mobile-menu[open]::backdrop{animation:menu-backdrop-in 540ms ease both}
+ .idila-mobile-menu[open] .idila-mobile-menu__panel{animation:menu-slide-in 650ms cubic-bezier(.76,0,.24,1) both}
+ .idila-mobile-menu[open] .idila-mobile-menu__panel::before{animation:menu-curve-in 750ms cubic-bezier(.76,0,.24,1) both}
+ .idila-mobile-menu[open] nav a{animation:menu-link-in 550ms cubic-bezier(.22,1,.36,1) both;animation-delay:160ms}
+ .idila-mobile-menu[open] nav a:nth-child(2){animation-delay:215ms}
+ .idila-mobile-menu[open] nav a:nth-child(3){animation-delay:270ms}
+ .idila-mobile-menu.is-closing .idila-mobile-menu__panel{animation:menu-slide-out 540ms cubic-bezier(.76,0,.24,1) both}
+ .idila-mobile-menu.is-closing .idila-mobile-menu__panel::before{animation:menu-curve-out 540ms cubic-bezier(.76,0,.24,1) both}
+ .idila-mobile-menu.is-closing::backdrop{animation:menu-backdrop-out 540ms ease both}
+}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+ .idila-story__image img,.idila-gallery__item img,.idila-location>figure img{transition:transform 700ms cubic-bezier(.22,1,.36,1)}
+ .idila-story__image:hover img,.idila-gallery__item:hover img,.idila-location>figure:hover img{transform:scale(1.025)}
+ .idila-button svg,.idila-text-link svg{transition:transform 250ms cubic-bezier(.22,1,.36,1)}
+ .idila-button:hover svg,.idila-text-link:hover svg{transform:translateX(2px)}
+}
+@media(max-width:1180px){.idila-page{--idila-header-height:85px}.idila-page .idila-header.is-compact{height:48px}.idila-header.is-compact .idila-menu-button{height:44px;width:44px}}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.idila-header::before{background:#242820f5}}
+@media(prefers-reduced-motion:reduce){.idila-page *, .idila-page *::before,.idila-page *::after{animation:none!important;transition:none!important}.idila-mobile-menu__panel::before{transform:scaleX(0)}}

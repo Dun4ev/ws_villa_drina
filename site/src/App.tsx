@@ -7,6 +7,7 @@ import { Gallery } from './components/Gallery';
 import { ContactDialog } from './components/ContactDialog';
 import { Modal } from './components/Modal';
 import { MobileMenu } from './components/MobileMenu';
+import { PropertyLinks } from './components/PropertyLinks';
 import { copy, villa, type Language } from './data/villa';
 import { photos } from './data/photos';
 import { useLuxuryMotion } from './hooks/useLuxuryMotion';
@@ -48,6 +49,7 @@ export function App() {
     <div className={`glass-header${scrolled ? ' is-compact' : ''}`}>
       <header className="header">
         <a href="#" className="brand" aria-label="Drina Lux"><span>DRINA LUX</span><small>RIVERSIDE STAYS</small></a>
+        <PropertyLinks current="drina" lang={lang}/>
         <nav className="desktop-nav" aria-label={lang==='sr'?'Glavna navigacija':'Main navigation'}>{t.nav.map((label,i)=><a key={label} href={`#${navTargets[i]}`}>{label}</a>)}</nav>
         <div className="header-actions"><div className="languages" aria-label={t.languageLabel}>{(['sr','en'] as const).map(l=><button key={l} lang={l==='sr'?'sr-Latn':'en'} aria-label={l==='sr'?'Srpski':'English'} aria-pressed={lang===l} onClick={()=>setLang(l)}>{l.toUpperCase()}</button>)}</div><a className="header-booking" href={villa.contacts.booking} target="_blank" rel="noopener noreferrer">Booking <ArrowUpRight size={16} aria-hidden="true"/></a><button ref={menuButton} className="menu-toggle" aria-label={menu?t.closeMenu:t.menu} aria-expanded={menu} aria-controls="mobile-nav" onClick={()=>setMenu(!menu)}>{menu?<X size={25}/>:<List size={25}/>}</button></div>
       </header>

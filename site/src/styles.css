@@ -33,3 +33,11 @@ html{scroll-padding-top:calc(var(--compact-header) + 20px)}
 
 .footer{flex-wrap:wrap}.developer-credit{font-size:10px;color:var(--muted);min-height:44px;display:inline-flex;align-items:center;gap:3px}.developer-credit span{text-decoration:underline;text-underline-offset:3px}.developer-credit:hover{color:var(--green)}
 @media(max-width:600px){.footer .developer-credit{flex-basis:100%;font-size:10px;min-height:32px}}
+
+.booking-link-label{display:flex;flex-direction:column;align-items:flex-start;gap:2px;line-height:1.2}
+.booking-link-label small{font-size:8px;font-weight:550;letter-spacing:.1em;opacity:.76}
+.booking-proof{display:flex;align-items:center;gap:8px;width:max-content;max-width:100%;min-height:36px;margin-top:10px;margin-bottom:12px;color:var(--muted);font-size:11px;transition:color .2s}
+.booking-proof:hover{color:var(--green)}
+.booking-proof strong{color:var(--green);font-size:12px;font-weight:650;font-variant-numeric:tabular-nums}
+.booking-proof b{font-weight:650;color:var(--green)}
+@media(max-width:600px){.booking-proof{font-size:10px;gap:6px;margin-top:7px;margin-bottom:10px}.booking-proof strong{font-size:11px}}

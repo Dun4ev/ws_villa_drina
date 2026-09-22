@@ -3,6 +3,7 @@ export type Localized = Record<Language, string>;
 export const villa = {
   id: 'drina-lux', name: 'Drina Lux',
   contacts: { booking: 'https://www.booking.com/hotel/rs/vikendica-drina-lux.html', phone: '+38169632641', email: 'drinalux@gmail.com', instagram: 'https://www.instagram.com/drinalux_/' },
+  bookingReview: { rating: '9.9 / 10', count: 38 } as { rating: string; count: number } | null,
   map: 'https://maps.app.goo.gl/c5vYcvp8BS4NURNV8',
   rooms: [
     { name: { sr: 'Spavaća soba', en: 'Bedroom' }, area: '15 m²' },
@@ -15,7 +16,7 @@ export const copy = {
   sr: {
     title: 'Drina Lux | Odmor na obali Drine', description: 'Vila sa privatnim bazenom na obali Drine, kod Loznice. Pogledajte fotografije i planirajte svoj boravak.',
     skip: 'Pređi na sadržaj', nav: ['Vila', 'Galerija', 'Doživljaj', 'Kontakt'], menu: 'Otvori meni', closeMenu: 'Zatvori meni',
-    booking: 'Pogledaj na Booking-u', contact: 'Kontaktiraj domaćina', shortBooking: 'Booking',
+    booking: 'Proverite dostupnost', reviewSource: 'recenzija na', contact: 'Kontaktiraj domaćina', shortBooking: 'Booking',
     eyebrow: 'ŠOR · LOZNICA · SRBIJA', hero1: 'Vaše mesto', hero2: 'pored Drine.',
     heroText: 'Jutra uz reku. Popodneva pored bazena.\nVreme samo za vas.', explore: 'Upoznajte vilu', heroNote: 'Privatna vila. Vaš ritam.', scroll: 'Otkrijte više',
     introLabel: 'DOBRO DOŠLI U DRINA LUX', intro1: 'Blizu prirode.', intro2: 'Daleko od žurbe.',
@@ -34,7 +35,7 @@ export const copy = {
   en: {
     title: 'Drina Lux | A private stay by the Drina', description: 'A villa with a private pool on the banks of the Drina, near Loznica. Explore the photos and plan your stay.',
     skip: 'Skip to content', nav: ['The villa', 'Gallery', 'Experience', 'Contact'], menu:'Open menu', closeMenu:'Close menu',
-    booking:'View on Booking', contact:'Contact the host', shortBooking:'Booking',
+    booking:'Check availability', reviewSource: 'reviews on', contact:'Contact the host', shortBooking:'Booking',
     eyebrow:'ŠOR · LOZNICA · SERBIA', hero1:'Your place', hero2:'by the Drina.', heroText:'Mornings by the river. Afternoons by the pool.\nTime that is entirely yours.', explore:'Explore the villa', heroNote:'A private villa. Your own pace.', scroll:'Discover more',
     introLabel:'WELCOME TO DRINA LUX', intro1:'Closer to nature.', intro2:'Further from the rush.', introText:'A house that opens onto the garden, a pool a few steps away, and the Drina just beyond. A place for long conversations, shared meals and days without a schedule.',
     riverCaption:'The Drina, at its own pace.', villaLabel:'YOUR STAY', villaText:'Three bedrooms, a generous living room and a terrace that draws you outside. Bring your favourite people and make room for a slower day.',

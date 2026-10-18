@@ -53,7 +53,12 @@ export function Modal({
 }: ModalProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const returnFocusRef = useRef<HTMLElement | null>(null);
+  const previousContent = useRef(children);
   const labelId = useId();
+
+  useEffect(() => {
+    if (open) previousContent.current = children;
+  }, [open, children]);
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -137,7 +142,7 @@ export function Modal({
       <span id={labelId} className="interaction-sr-only">
         {label}
       </span>
-      {children}
+      {open ? children : previousContent.current}
     </dialog>
   );
 }

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 
 import { Modal } from "./Modal";
+import { PhotoTransition } from './PhotoTransition';
 import "./interactions.css";
 
 export type GalleryLanguage = "sr" | "en";
@@ -173,7 +174,7 @@ export function Gallery({ lang, photos }: GalleryProps) {
               ×
             </button>
             <figure>
-              <img
+              <PhotoTransition
                 src={activePhoto.src}
                 alt={activePhoto.alt[lang]}
                 width={activePhoto.width}

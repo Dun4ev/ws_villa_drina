@@ -1,12 +1,12 @@
 import { useEffect } from "react";
+import { isKeyboardInput, motionToken } from '../motion';
 
 const REVEAL_SELECTOR = "[data-reveal]";
-const REVEAL_EASING = "cubic-bezier(.22,1,.36,1)";
 const revealedElements = new WeakSet<HTMLElement>();
 
 function getDelay(element: HTMLElement) {
   const parsed = Number.parseInt(element.dataset.revealDelay ?? "0", 10);
-  return Number.isFinite(parsed) ? Math.min(Math.max(parsed, 0), 2_000) : 0;
+  return Number.isFinite(parsed) ? Math.min(Math.max(parsed, 0), 160) : 0;
 }
 
 /**
@@ -14,6 +14,18 @@ function getDelay(element: HTMLElement) {
  * The DOM remains fully visible when animation APIs are unavailable.
  */
 export function useLuxuryMotion() {
+  useEffect(() => {
+    const root = document.documentElement;
+    const pointer = () => { root.dataset.inputModality = 'pointer'; };
+    const keyboard = () => { root.dataset.inputModality = 'keyboard'; };
+    document.addEventListener('pointerdown', pointer, true);
+    document.addEventListener('keydown', keyboard, true);
+    return () => {
+      document.removeEventListener('pointerdown', pointer, true);
+      document.removeEventListener('keydown', keyboard, true);
+    };
+  }, []);
+
   useEffect(() => {
     if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
       return;
@@ -45,31 +57,31 @@ export function useLuxuryMotion() {
     const animateElement = (element: HTMLElement) => {
       if (revealedElements.has(element) || reducedMotion.matches) return;
 
+      if (isKeyboardInput()) {
+        settleElement(element);
+        return;
+      }
+
       revealedElements.add(element);
       observer?.unobserve(element);
 
       const mobile = mobileViewport.matches;
-      const containsLargeImage =
-        element.matches("img, figure") || element.querySelector("img") !== null;
       try {
         const animation = element.animate(
           [
             {
-              opacity: 0.3,
-              transform: `translateY(${mobile ? 8 : 14}px)`,
-              filter:
-                mobile || containsLargeImage ? "blur(0)" : "blur(3px)",
+              opacity: 0.55,
+              transform: `translateY(${mobile ? 6 : 8}px)`,
             },
             {
               opacity: 1,
               transform: "translateY(0)",
-              filter: "blur(0)",
             },
           ],
           {
-            duration: mobile ? 500 : 700,
+            duration: 600,
             delay: getDelay(element),
-            easing: REVEAL_EASING,
+            easing: motionToken('--ease-out', 'cubic-bezier(0.23, 1, 0.32, 1)'),
             fill: "both",
           },
         );
@@ -126,13 +138,19 @@ export function useLuxuryMotion() {
       }
     };
 
+    const interruptForKeyboard = () => {
+      for (const [element] of activeAnimations) settleElement(element);
+    };
+
     document.addEventListener("focusin", handleFocus, true);
+    document.addEventListener('keydown', interruptForKeyboard, true);
     reducedMotion.addEventListener("change", handleMotionPreference);
     handleMotionPreference();
 
     return () => {
       observer?.disconnect();
       document.removeEventListener("focusin", handleFocus, true);
+      document.removeEventListener('keydown', interruptForKeyboard, true);
       reducedMotion.removeEventListener("change", handleMotionPreference);
       for (const animation of activeAnimations.values()) animation.cancel();
       activeAnimations.clear();

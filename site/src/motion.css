@@ -1,3 +1,13 @@
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --motion-fast: 160ms;
+  --motion-hover: 200ms;
+  --motion-ui: 250ms;
+  --motion-drawer: 280ms;
+  --motion-reduced: 120ms;
+}
+
 .hero {
   overflow: hidden;
   overflow: clip;
@@ -17,13 +27,13 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .hero-image {
-    animation: luxury-hero-settle 1400ms cubic-bezier(.22, 1, .36, 1) both;
+    animation: luxury-hero-settle 1000ms var(--ease-out) both;
     transform-origin: 50% 50%;
   }
 
   @keyframes luxury-hero-settle {
     from {
-      transform: scale(1.025);
+      transform: scale(1.015);
     }
 
     to {
@@ -37,21 +47,122 @@
   .villa-image > img,
   .experience-grid article > img,
   .location-image img {
-    transition: transform 700ms cubic-bezier(.22, 1, .36, 1);
+    transition: transform var(--motion-hover) ease;
   }
 
   .intro-image:hover img,
   .villa-image:hover > img,
   .experience-grid article:hover > img,
   .location-image:hover img {
-    transform: scale(1.025);
+    transform: scale(1.015);
   }
 
   .button svg {
-    transition: transform 250ms cubic-bezier(.22, 1, .36, 1);
+    transition: transform var(--motion-fast) ease;
   }
 
   .button:hover svg {
     transform: translateX(2px);
   }
+}
+
+:is(.button, .idila-button, .gallery__filter, .gallery__expand,
+  .gallery-lightbox__navigation button, .idila-lightbox__controls button,
+  .curved-menu-close, .idila-mobile-menu__close) {
+  transition: transform var(--motion-fast) var(--ease-out),
+    background-color var(--motion-hover) ease, color var(--motion-hover) ease,
+    border-color var(--motion-hover) ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html:not([data-input-modality="keyboard"]) :where(.button, .idila-button,
+    .gallery__filter, .gallery__expand, .gallery-lightbox__navigation button,
+    .idila-lightbox__controls button, .curved-menu-close,
+    .idila-mobile-menu__close):active {
+    transform: scale(0.97);
+  }
+}
+
+/* Native dialog keeps its top-layer surface through a symmetric CSS exit. */
+.photo-transition {
+  opacity: 1;
+  transition: opacity var(--motion-fast) var(--ease-out);
+}
+
+.interaction-modal:not(:is(.curved-menu, .idila-mobile-menu)) {
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity var(--motion-ui) var(--ease-out),
+    transform var(--motion-ui) var(--ease-out),
+    display var(--motion-ui) allow-discrete, overlay var(--motion-ui) allow-discrete;
+}
+
+.interaction-modal:not(:is(.curved-menu, .idila-mobile-menu))[open] {
+  pointer-events: auto;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.interaction-modal:not(:is(.curved-menu, .idila-mobile-menu))::backdrop {
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--motion-ui) var(--ease-out),
+    display var(--motion-ui) allow-discrete, overlay var(--motion-ui) allow-discrete;
+}
+
+.interaction-modal:not(:is(.curved-menu, .idila-mobile-menu))[open]::backdrop {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+@starting-style {
+  .interaction-modal:not(:is(.curved-menu, .idila-mobile-menu))[open] {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  .interaction-modal:not(:is(.curved-menu, .idila-mobile-menu))[open]::backdrop {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-transition { transition-duration: var(--motion-reduced); }
+  .interaction-modal:not(:is(.curved-menu, .idila-mobile-menu)) {
+    transform: none;
+    transition: opacity var(--motion-reduced) ease,
+      display var(--motion-reduced) allow-discrete,
+      overlay var(--motion-reduced) allow-discrete;
+  }
+  .interaction-modal:not(:is(.curved-menu, .idila-mobile-menu))[open] {
+    transform: none;
+  }
+  .interaction-modal:not(:is(.curved-menu, .idila-mobile-menu))::backdrop {
+    transition-duration: var(--motion-reduced);
+  }
+  @starting-style {
+    .interaction-modal:not(:is(.curved-menu, .idila-mobile-menu))[open] {
+      transform: none;
+    }
+  }
+}
+
+/* Keyboard commands and focus changes never wait for decorative motion. */
+html[data-input-modality="keyboard"] {
+  scroll-behavior: auto;
+}
+html[data-input-modality="keyboard"] :is(.interaction-modal,
+  .curved-menu-panel, .curved-menu nav a,
+  .idila-mobile-menu__panel, .idila-mobile-menu nav a, .photo-transition),
+html[data-input-modality="keyboard"] .curved-menu-panel::before,
+html[data-input-modality="keyboard"] .idila-mobile-menu__panel::before {
+  transition: none !important;
+  animation: none !important;
+}
+html[data-input-modality="keyboard"] .interaction-modal::backdrop {
+  transition: none !important;
+  animation: none !important;
+}
+html[data-input-modality="keyboard"] :is(.hero-image, .idila-hero__visual img) {
+  animation: none !important;
 }

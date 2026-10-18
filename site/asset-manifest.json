@@ -1,114 +1,166 @@
 {
-  "generatedAt": "2026-09-21",
+  "generatedAt": "2026-10-18",
+  "generator": "built-in image_gen",
+  "referenceImageInputs": false,
+  "prompts": "generated-assets-prompts.json",
   "processing": {
-    "photos": "WebP, quality 84, method 6, metadata stripped",
-    "maxLongEdge": 1600,
-    "heroMaxLongEdge": 2200
+    "photos": "WebP quality84 method6, metadata stripped",
+    "social": "JPEG 1200x630 crop from generated exterior, metadata stripped"
   },
+  "legacyArchive": "../references/private-archive/public-images-2026-10-18/",
   "assets": [
     {
-      "output": "public/images/hero.webp",
-      "source": "../photo/1C06DD28-56C8-476C-8111-6B51674BE7D7_1_102_a.jpeg",
-      "dimensions": { "width": 2200, "height": 1238 },
-      "category": "villa"
+      "output": "public/images/mirava/exterior.webp",
+      "source": "../references/generated/2026-10-18/mirava-exterior.png",
+      "kind": "ai-generated-photograph",
+      "promptKey": "mirava/exterior",
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "bytes": 438846,
+      "sha256": "f6be15b8c212aa02ca75f8050091e769573ebe29e0b85aeddc54c69167da51b9"
     },
     {
-      "output": "public/images/villa.webp",
-      "source": "../photo/FDACBEE8-97B2-4C4C-8DE6-868C80F1237A_1_102_o.jpeg",
-      "dimensions": { "width": 1600, "height": 1200 },
-      "category": "villa"
+      "output": "public/images/borika/exterior.webp",
+      "source": "../references/generated/2026-10-18/borika-exterior.png",
+      "kind": "ai-generated-photograph",
+      "promptKey": "borika/exterior",
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "bytes": 347254,
+      "sha256": "3bd7a459a541e471724968fb91424bb0c2f63a10c7a2b1b54d4e14c07f1a1a9c"
     },
     {
-      "output": "public/images/pool.webp",
-      "source": "../photo/707966B6-FA7B-42EF-A1A9-009DA84F3290_1_102_o.jpeg",
-      "dimensions": { "width": 1600, "height": 1200 },
-      "category": "outdoors"
+      "output": "public/images/mirava/living.webp",
+      "source": "../references/generated/2026-10-18/mirava-living.png",
+      "kind": "ai-generated-photograph",
+      "promptKey": "mirava/living",
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "bytes": 309358,
+      "sha256": "324e6fd7883f23a2eff4236395ec85456d194c307b5dd15587b4b6bd5523a135"
     },
     {
-      "output": "public/images/pool-sunset.webp",
-      "source": "../photo/A932F91A-3DE0-449C-A738-4B1911AAA447_1_102_o.jpeg",
-      "dimensions": { "width": 1600, "height": 1200 },
-      "category": "outdoors"
+      "output": "public/images/borika/living.webp",
+      "source": "../references/generated/2026-10-18/borika-living.png",
+      "kind": "ai-generated-photograph",
+      "promptKey": "borika/living",
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "bytes": 300782,
+      "sha256": "e67b0a17ebaf4a3e4826999a3df763ee4d3a6a47a79eaecd7999a8173270b6dd"
     },
     {
-      "output": "public/images/living.webp",
-      "source": "../photo/8F08D132-57E8-41C3-B036-8F90E8A87290_1_102_o.jpeg",
-      "dimensions": { "width": 1600, "height": 1200 },
-      "category": "interior"
+      "output": "public/images/mirava/bedroom.webp",
+      "source": "../references/generated/2026-10-18/mirava-bedroom.png",
+      "kind": "ai-generated-photograph",
+      "promptKey": "mirava/bedroom",
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "bytes": 234656,
+      "sha256": "1b83a48402848b56bba4093323bd30b989e8cfca86b6af1c62972ae5fca302d5"
     },
     {
-      "output": "public/images/living-river.webp",
-      "source": "../photo/7F020722-C7D7-4DBF-9066-12CDBD6D8275_1_102_o.jpeg",
-      "dimensions": { "width": 1600, "height": 1200 },
-      "category": "interior"
+      "output": "public/images/borika/bedroom.webp",
+      "source": "../references/generated/2026-10-18/borika-bedroom.png",
+      "kind": "ai-generated-photograph",
+      "promptKey": "borika/bedroom",
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "bytes": 295610,
+      "sha256": "03ed9faed4b92e96201117139dd4c9e4119ec88930e81dfac62b0d90a5616890"
     },
     {
-      "output": "public/images/bedroom.webp",
-      "source": "../photo/CF760E36-9154-4FEC-B0B9-215815CEEA78_1_102_o.jpeg",
-      "dimensions": { "width": 1600, "height": 1200 },
-      "category": "interior"
+      "output": "public/images/mirava/river.webp",
+      "source": "../references/generated/2026-10-18/mirava-river.png",
+      "kind": "ai-generated-photograph",
+      "promptKey": "mirava/river",
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "bytes": 462676,
+      "sha256": "b6bf5b789f397a76d23779bc23ca4823b0ce4ff190391df1da64604d04d13a2b"
     },
     {
-      "output": "public/images/bathroom.webp",
-      "source": "../photo/28C1950A-18A1-4491-A9F4-056F31453E02_1_102_o.jpeg",
-      "dimensions": { "width": 1200, "height": 1600 },
-      "category": "interior"
+      "output": "public/images/borika/terrace.webp",
+      "source": "../references/generated/2026-10-18/borika-terrace.png",
+      "kind": "ai-generated-photograph",
+      "promptKey": "borika/terrace",
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "bytes": 262636,
+      "sha256": "0511ec57d69cf674a5984a55f60890c938b93dc79257052b7843027a63d01075"
     },
     {
-      "output": "public/images/bbq.webp",
-      "source": "../photo/9589D1E8-7E53-4D69-9718-E780525B2426_1_102_o.jpeg",
-      "dimensions": { "width": 1600, "height": 1200 },
-      "category": "outdoors"
+      "output": "public/images/mirava/pool.webp",
+      "source": "../references/generated/2026-10-18/mirava-pool.png",
+      "kind": "ai-generated-photograph",
+      "promptKey": "mirava/pool",
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "bytes": 393764,
+      "sha256": "4ce32f85fd0695703e426e41e04bb021d50b8399215981bf4b9831bd7341ad6a"
     },
     {
-      "output": "public/images/terrace.webp",
-      "source": "../photo/A4A7AB7D-3B46-40C5-A16D-5585EE35F907_1_102_o.jpeg",
-      "dimensions": { "width": 1600, "height": 1200 },
-      "category": "outdoors"
+      "output": "public/images/mirava/terrace.webp",
+      "source": "../references/generated/2026-10-18/mirava-terrace.png",
+      "kind": "ai-generated-photograph",
+      "promptKey": "mirava/terrace",
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "bytes": 351934,
+      "sha256": "e86f959a178c9c9a5c19b8f1a983c53121c705f7e2b5349013da9641cfc529df"
     },
     {
-      "output": "public/images/river-sunset.webp",
-      "source": "../photo/808CFC9C-1C65-4A7A-A1D1-83CD1E739932_1_102_o.jpeg",
-      "dimensions": { "width": 1600, "height": 1200 },
-      "category": "river"
+      "output": "public/images/mirava/social.jpg",
+      "source": "public/images/mirava/exterior.webp",
+      "kind": "generated-image-social-crop",
+      "dimensions": {
+        "width": 1200,
+        "height": 630
+      },
+      "bytes": 254517,
+      "sha256": "95b7d351827e3a350068eb08ada66e029eda4e0b0d82eb25fc7dd2e505ec9e17"
     },
     {
-      "output": "public/images/river.webp",
-      "source": "../photo/279A625B-2DA7-4649-B5AA-98B83E5F3E35_1_102_o.jpeg",
-      "dimensions": { "width": 1600, "height": 1200 },
-      "category": "river"
+      "output": "public/images/borika/social.jpg",
+      "source": "public/images/borika/exterior.webp",
+      "kind": "generated-image-social-crop",
+      "dimensions": {
+        "width": 1200,
+        "height": 630
+      },
+      "bytes": 210735,
+      "sha256": "900008c3ca4ffcb897c2850826b066e603b60459f0996f46f315a0e3b6460b9e"
     },
     {
-      "output": "public/images/river-panorama.webp",
-      "source": "../photo/E3897EC8-07A5-4EB0-8498-23D7994D0B76_4_5005_c.jpeg",
-      "dimensions": { "width": 1600, "height": 469 },
-      "category": "river"
-    },
-    {
-      "output": "public/images/garden.webp",
-      "source": "../photo/F1D47BC0-7637-4B49-A77B-EDE948042031_1_102_o.jpeg",
-      "dimensions": { "width": 1600, "height": 1200 },
-      "category": "outdoors"
-    },
-    {
-      "output": "public/images/exterior-sunset.webp",
-      "source": "../photo/9EB79057-38A6-4FFF-90D3-173AA24B42EE_1_102_o.jpeg",
-      "dimensions": { "width": 1600, "height": 1200 },
-      "category": "villa"
-    },
-    {
-      "output": "public/images/pool-loungers.webp",
-      "source": "../photo/5FE7D395-6BF9-4E86-8DF0-57F993300831_1_102_o.jpeg",
-      "dimensions": { "width": 1600, "height": 1200 },
-      "category": "outdoors"
-    },
-    {
-      "output": "public/images/floor-plan.png",
-      "source": "../references/floorplans/drina-lux-floor-plan.png",
-      "dimensions": { "width": 1179, "height": 966 },
-      "category": "floor-plan",
-      "updatedAt": "2026-09-22",
-      "sha256": "8c2d1e954d11b0aed04df1213bf1296dc19c355323e27676f1136c9d59740976"
+      "output": "public/images/mirava/floor-plan.svg",
+      "source": "independently authored SVG",
+      "kind": "illustrative-concept-diagram",
+      "dimensions": {
+        "width": 1179,
+        "height": 966
+      },
+      "bytes": 2963,
+      "sha256": "64f4c2fda897ccee31d58d0992f4f34452811d71e982b1e3786f0f939dd2d4e2"
     }
   ]
 }

@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { access, readFile } from "node:fs/promises";
+import { access, readFile, readdir } from "node:fs/promises";
 import test from "node:test";
 import worker from "../worker/index.js";
 
@@ -45,11 +45,11 @@ test("returns route-specific social metadata before client JavaScript runs", asy
   const calls = [];
   const html = `<!doctype html><html><head>
     <meta name="robots" content="noindex, nofollow" />
-    <meta property="og:title" content="Idila Zaovinskog jezera" />
+    <meta property="og:title" content="Vila Borika" />
     <meta property="og:description" content="Kuća na Tari." />
     <meta property="og:url" content="/idila/" />
-    <meta property="og:image" content="/images/idila-social.jpg" />
-    <meta name="twitter:image" content="/images/idila-social.jpg" />
+    <meta property="og:image" content="/images/borika/social.jpg" />
+    <meta name="twitter:image" content="/images/borika/social.jpg" />
     </head><body><div id="root"></div></body></html>`;
   const response = await worker.fetch(
     new Request("https://villa.example/idila/?lang=en", { headers: { accept: "text/html" } }),
@@ -66,10 +66,10 @@ test("returns route-specific social metadata before client JavaScript runs", asy
   const body = await response.text();
   assert.equal(response.status, 200);
   assert.deepEqual(calls, ["/idila/index.html"]);
-  assert.match(body, /property="og:title" content="Idila Zaovinskog jezera"/);
+  assert.match(body, /property="og:title" content="Vila Borika"/);
   assert.match(body, /property="og:url" content="https:\/\/villa\.example\/idila\/"/);
-  assert.match(body, /property="og:image" content="https:\/\/villa\.example\/images\/idila-social\.jpg"/);
-  assert.match(body, /name="twitter:image" content="https:\/\/villa\.example\/images\/idila-social\.jpg"/);
+  assert.match(body, /property="og:image" content="https:\/\/villa\.example\/images\/borika\/social\.jpg"/);
+  assert.match(body, /name="twitter:image" content="https:\/\/villa\.example\/images\/borika\/social\.jpg"/);
   assert.match(body, /name="robots" content="noindex, nofollow"/);
 });
 
@@ -104,14 +104,48 @@ test("builds separate noindex social metadata documents and preview images", asy
   const drina = await readFile(new URL("index.html", dist), "utf8");
   const idila = await readFile(new URL("idila/index.html", dist), "utf8");
 
-  assert.match(drina, /<title>Drina Lux \| Odmor na obali Drine<\/title>/);
-  assert.match(drina, /property="og:image" content="(?:https?:\/\/[^"/]+)?\/images\/drina-lux-social\.jpg"/);
+  assert.match(drina, /<title>Vila Mirava \| Portfolio koncept<\/title>/);
+  assert.match(drina, /property="og:image" content="(?:https?:\/\/[^"/]+)?\/images\/mirava\/social\.jpg"/);
   assert.match(drina, /name="robots" content="noindex, nofollow"/);
-  assert.match(idila, /<title>Idila Zaovinskog jezera \| Kuća za odmor na Tari<\/title>/);
-  assert.match(idila, /property="og:image" content="(?:https?:\/\/[^"/]+)?\/images\/idila-social\.jpg"/);
+  assert.match(idila, /<title>Vila Borika \| Portfolio koncept<\/title>/);
+  assert.match(idila, /property="og:image" content="(?:https?:\/\/[^"/]+)?\/images\/borika\/social\.jpg"/);
   assert.match(idila, /name="robots" content="noindex, nofollow"/);
-  assert.doesNotMatch(idila, /Drina Lux \| Odmor na obali Drine/);
+  assert.doesNotMatch(idila, /Vila Mirava \| Portfolio koncept/);
 
-  await access(new URL("images/drina-lux-social.jpg", dist));
-  await access(new URL("images/idila-social.jpg", dist));
+  await access(new URL("images/mirava/social.jpg", dist));
+  await access(new URL("images/borika/social.jpg", dist));
+});
+
+// Public image output is an explicit portfolio contract: reference originals must stay private.
+test("ships only the approved generated portfolio images", async () => {
+  const root = new URL("../dist/client/images/", import.meta.url);
+  async function imagePaths(directory, prefix = "") {
+    const files = [];
+    for (const entry of await readdir(directory, { withFileTypes: true })) {
+      const relative = prefix + entry.name;
+      if (entry.isDirectory()) {
+        files.push(...await imagePaths(new URL(entry.name + "/", directory), relative + "/"));
+      } else {
+        assert.ok(entry.isFile(), `Unexpected non-file image entry: ${relative}`);
+        files.push(relative);
+      }
+    }
+    return files;
+  }
+
+  assert.deepEqual((await imagePaths(root)).sort(), [
+    "borika/bedroom.webp",
+    "borika/exterior.webp",
+    "borika/living.webp",
+    "borika/social.jpg",
+    "borika/terrace.webp",
+    "mirava/bedroom.webp",
+    "mirava/exterior.webp",
+    "mirava/floor-plan.svg",
+    "mirava/living.webp",
+    "mirava/pool.webp",
+    "mirava/river.webp",
+    "mirava/social.jpg",
+    "mirava/terrace.webp",
+  ].sort());
 });

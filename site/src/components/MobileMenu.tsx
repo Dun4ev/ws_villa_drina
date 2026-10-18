@@ -3,7 +3,8 @@ import { flushSync } from 'react-dom';
 import { ArrowUpRight, X } from '@phosphor-icons/react';
 import { Modal } from './Modal';
 import { PropertyLinks } from './PropertyLinks';
-import { copy, villa, type Language } from '../data/villa';
+import { copy, type Language } from '../data/villa';
+import { menuExitDuration } from '../motion';
 import './mobile-menu.css';
 const targets = ['villa', 'gallery', 'experience', 'contact'];
 export function MobileMenu({ open, onClose, lang }: { open: boolean; onClose: () => void; lang: Language }) {
@@ -21,8 +22,9 @@ export function MobileMenu({ open, onClose, lang }: { open: boolean; onClose: ()
         section?.setAttribute('tabindex', '-1'); section?.focus({ preventScroll: true });
       });
     };
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) finish();
-    else { setClosing(true); timer.current = setTimeout(finish, 540); }
+    const duration = menuExitDuration();
+    if (duration === 0) finish();
+    else { setClosing(true); timer.current = setTimeout(finish, duration); }
   };
   useEffect(() => () => { if (timer.current) clearTimeout(timer.current); }, []);
   useEffect(() => {
@@ -34,9 +36,9 @@ export function MobileMenu({ open, onClose, lang }: { open: boolean; onClose: ()
   return <Modal open={open} onClose={() => close()} label={lang === 'sr' ? 'Mobilna navigacija' : 'Mobile navigation'} className={`curved-menu ${closing ? 'is-closing' : ''}`}>
     <div className="curved-menu-panel">
       <PropertyLinks current="drina" lang={lang}/>
-      <div className="curved-menu-top"><span className="curved-menu-brand">DRINA LUX<small>RIVERSIDE STAYS</small></span><button className="curved-menu-close" aria-label={t.closeMenu} onClick={() => close()}><X size={26} weight="light" aria-hidden="true" /></button></div>
+      <div className="curved-menu-top"><span className="curved-menu-brand">VILA MIRAVA<small>RIVERSIDE STAYS</small></span><button className="curved-menu-close" aria-label={t.closeMenu} onClick={() => close()}><X size={26} weight="light" aria-hidden="true" /></button></div>
       <nav id="mobile-nav" aria-label={lang === 'sr' ? 'Mobilna navigacija' : 'Mobile navigation'}>{t.nav.map((label, i) => <a key={targets[i]} style={{ '--item': i } as CSSProperties} href={`#${targets[i]}`} onClick={e => { e.preventDefault(); close(targets[i]); }}><span>{label}</span><ArrowUpRight size={24} weight="light" aria-hidden="true" /></a>)}</nav>
-      <div className="curved-menu-footer"><p>Šor · Loznica · Serbia</p><a className="button button-dark" href={villa.contacts.booking} target="_blank" rel="noopener noreferrer">{t.booking}<ArrowUpRight size={18} aria-hidden="true" /></a><a className="curved-menu-instagram" href={villa.contacts.instagram} target="_blank" rel="noopener noreferrer">Instagram <ArrowUpRight size={14} aria-hidden="true" /></a></div>
+      <div className="curved-menu-footer"><p>{t.eyebrow}</p><a className="button button-dark" href="#gallery" onClick={e => { e.preventDefault(); close('gallery'); }}>{t.photos}<ArrowUpRight size={18} aria-hidden="true" /></a></div>
     </div>
   </Modal>;
 }

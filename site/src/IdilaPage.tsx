@@ -7,16 +7,14 @@ import {
   Campfire,
   CaretLeft,
   CaretRight,
-  EnvelopeSimple,
   List,
-  MapPin,
   Mountains,
-  Phone,
-  Play,
   UsersThree,
   X,
 } from '@phosphor-icons/react';
 import { Modal } from './components/Modal';
+import { PhotoTransition } from './components/PhotoTransition';
+import { menuExitDuration } from './motion';
 import { PropertyLinks } from './components/PropertyLinks';
 import type { Language } from './data/villa';
 import './idila.css';
@@ -24,7 +22,7 @@ import './idila-layout.css';
 import './idila-effects.css';
 import './components/mobile-menu.css';
 
-type IdilaCopy = {
+type BorikaCopy = {
   title: string;
   description: string;
   skip: string;
@@ -54,117 +52,97 @@ type IdilaCopy = {
   taraEyebrow: string;
   taraTitle: string;
   taraText: string;
-  distanceLabel: string;
-  distanceValue: string;
-  distanceNote: string;
-  map: string;
   videoEyebrow: string;
   videoTitle: string;
   videoAction: string;
   contactEyebrow: string;
   contactTitle: string;
   contactText: string;
-  call: string;
-  email: string;
   footerPlace: string;
 };
 
-const copy: Record<Language, IdilaCopy> = {
+const copy: Record<Language, BorikaCopy> = {
   sr: {
-    title: 'Idila Zaovinskog jezera | Kuća za odmor na Tari',
-    description: 'Kuća za odmor Idila u Novoj Vežanji, Zaovine, za 6 odraslih ili do 8 gostiju sa decom.',
+    title: 'Vila Borika | Portfolio koncept',
+    description: 'Samostalni portfolio koncept izmišljene planinske kuće, sa AI ilustracijama. Nije klijentski projekat; rezervacije nisu dostupne.',
     skip: 'Pređi na sadržaj',
     menu: 'Otvori meni',
     close: 'Zatvori meni',
     closePhoto: 'Zatvori fotografiju',
     language: 'Izbor jezika',
-    nav: ['Kuća', 'Galerija', 'Tara'],
-    inquiry: 'Pošaljite upit',
-    place: 'Zaovine · Nova Vežanja',
-    heroTitle: 'Vaša kuća\nna Tari.',
+    nav: ['Kuća', 'Galerija', 'Priroda'],
+    inquiry: 'Pogledajte galeriju',
+    place: 'PORTFOLIO · SAMOSTALNI KONCEPT',
+    heroTitle: 'Vaša kuća\nna planini.',
     heroText: 'Predah u prirodi, u ritmu koji vam prija.',
     facts: ['3 spavaće sobe', '6 odraslih', 'Do 8 sa decom', 'Kamin na drva'],
-    storyEyebrow: 'Tara u svom najlepšem ritmu',
+    storyEyebrow: 'Priroda u svom najlepšem ritmu',
     storyTitle: 'Mesto za\nsporija jutra.',
     storyText: 'Topla kuća među borovima, sa prostorom za zajedničke trenutke i mirne dane na planini.',
-    storyCaption: 'Kuća, terasa i priroda Tare',
+    storyCaption: 'Kuća, terasa i priroda',
     imageNotes: ['Detalji enterijera', 'Terasa za duga jutra'],
     galleryEyebrow: 'Pogledajte kuću',
     galleryTitle: 'Prostor za vaš boravak.',
     galleryText: 'Otvorite fotografiju za veći prikaz.',
     openPhoto: 'Otvori fotografiju',
-    galleryDialog: 'Galerija kuće Idila',
+    galleryDialog: 'Galerija kuće Borika',
     previous: 'Prethodna fotografija',
     next: 'Sledeća fotografija',
-    images: ['Kuća Idila na Tari', 'Enterijer kuće Idila', 'Terasa kuće Idila', 'Spavaća soba u kući Idila'],
-    taraEyebrow: 'Zaovine · Tara',
+    images: ['Kuća Borika na planini', 'Enterijer kuće Borika', 'Terasa kuće Borika', 'Spavaća soba u kući Borika'],
+    taraEyebrow: 'Planinski predah',
     taraTitle: 'Planina blizu,\nsvakodnevica daleko.',
-    taraText: 'Idila se nalazi u naselju Nova Vežanja u Zaovinama. Jezero je udaljeno oko 800 m vazdušnom linijom; kuća nije na samoj obali.',
-    distanceLabel: 'Zaovinsko jezero',
-    distanceValue: 'oko 800 m',
-    distanceNote: 'vazdušnom linijom',
-    map: 'Otvori lokaciju',
-    videoEyebrow: 'Tara govori sama za sebe',
-    videoTitle: 'Upoznajte Idilu.',
-    videoAction: 'Pogledajte video',
-    contactEyebrow: 'Kontakt',
-    contactTitle: 'Pošaljite upit',
-    contactText: 'Rado ćemo odgovoriti i pomoći oko planiranja boravka.',
-    call: 'Pozovite',
-    email: 'Pošaljite email',
-    footerPlace: 'Zaovine · Tara · Srbija',
+    taraText: 'Borovi, mirna jutra i pogled na prirodu. Ova stranica prikazuje dizajn koncept; tačna lokacija i udaljenosti nisu navedene.',
+    videoEyebrow: 'Priroda govori sama za sebe',
+    videoTitle: 'Upoznajte Boriku.',
+    videoAction: 'Pogledajte galeriju',
+    contactEyebrow: 'Portfolio',
+    contactTitle: 'Samostalni dizajn koncept',
+    contactText: 'Samostalni portfolio koncept, nije klijentski projekat. Objekti i nazivi su izmišljeni; ilustrativne slike su generisane pomoću AI. Kontakt i rezervacije nisu dostupni.',
+    footerPlace: 'Portfolio · Dizajn koncept',
   },
   en: {
-    title: 'Idila Zaovinskog jezera | Holiday house on Tara',
-    description: 'Idila holiday house in Nova Vežanja, Zaovine, for 6 adults or up to 8 guests with children.',
+    title: 'Vila Borika | Portfolio concept',
+    description: 'A self-initiated portfolio concept for a fictional mountain house with AI-generated illustrations. Not a client commission; no reservations.',
     skip: 'Skip to content',
     menu: 'Open menu',
     close: 'Close menu',
     closePhoto: 'Close photograph',
     language: 'Language selection',
-    nav: ['The house', 'Gallery', 'Tara'],
-    inquiry: 'Send an inquiry',
-    place: 'Zaovine · Nova Vežanja',
-    heroTitle: 'Your house\non Tara.',
+    nav: ['The house', 'Gallery', 'Nature'],
+    inquiry: 'Explore the gallery',
+    place: 'PORTFOLIO · SELF-INITIATED CONCEPT',
+    heroTitle: 'Your house\nin the mountains.',
     heroText: 'A pause in nature, at a pace that feels like your own.',
     facts: ['3 bedrooms', '6 adults', 'Up to 8 with children', 'Wood fireplace'],
-    storyEyebrow: 'Tara at its most peaceful',
+    storyEyebrow: 'Nature at its most peaceful',
     storyTitle: 'A place for\nslower mornings.',
     storyText: 'A warm house among the pines, with room for time together and quiet days in the mountains.',
-    storyCaption: 'The house, terrace and nature of Tara',
+    storyCaption: 'The house, terrace and surrounding nature',
     imageNotes: ['Interior details', 'A terrace for long mornings'],
     galleryEyebrow: 'See the house',
     galleryTitle: 'Space for your stay.',
     galleryText: 'Open any photograph for a larger view.',
     openPhoto: 'Open photograph',
-    galleryDialog: 'Idila house gallery',
+    galleryDialog: 'Borika house gallery',
     previous: 'Previous photograph',
     next: 'Next photograph',
-    images: ['Idila house on Tara', 'Interior of Idila house', 'Terrace at Idila house', 'Bedroom at Idila house'],
-    taraEyebrow: 'Zaovine · Tara',
+    images: ['Borika house in the mountains', 'Interior of Borika house', 'Terrace at Borika house', 'Bedroom at Borika house'],
+    taraEyebrow: 'Mountain retreat',
     taraTitle: 'The mountain close,\neveryday life far away.',
-    taraText: 'Idila is in Nova Vežanja, Zaovine. The lake is approximately 800 m away in a straight line; the house is not on the shoreline.',
-    distanceLabel: 'Zaovine Lake',
-    distanceValue: 'about 800 m',
-    distanceNote: 'in a straight line',
-    map: 'Open location',
-    videoEyebrow: 'Tara speaks for itself',
-    videoTitle: 'Meet Idila.',
-    videoAction: 'Watch the video',
-    contactEyebrow: 'Contact',
-    contactTitle: 'Send an inquiry',
-    contactText: 'We will be happy to answer your questions and help plan your stay.',
-    call: 'Call us',
-    email: 'Send an email',
-    footerPlace: 'Zaovine · Tara · Serbia',
+    taraText: 'Pines, quiet mornings and views of nature. This page presents a design concept; the exact location and distances are omitted.',
+    videoEyebrow: 'Nature speaks for itself',
+    videoTitle: 'Meet Borika.',
+    videoAction: 'Explore the gallery',
+    contactEyebrow: 'Portfolio',
+    contactTitle: 'Self-initiated design concept',
+    contactText: 'A self-initiated portfolio concept, not a client commission. Properties and names are fictional; illustrative images are AI-generated. Contact and reservations are unavailable.',
+    footerPlace: 'Portfolio · Design concept',
   },
 };
 
-const galleryImages = ['/images/idila/hero-clean.jpg', '/images/idila/interior-clean.jpg', '/images/idila/terrace-clean.jpg', '/images/idila/bedroom-clean.jpg'] as const;
-const gallerySizes = [[1449, 1085], [1448, 1086], [1254, 1254], [1538, 1023]] as const;
+const galleryImages = ['/images/borika/exterior.webp', '/images/borika/living.webp', '/images/borika/terrace.webp', '/images/borika/bedroom.webp'] as const;
+const gallerySizes = [[1536, 1024], [1536, 1024], [1536, 1024], [1536, 1024]] as const;
 const factsIcons = [Bed, UsersThree, UsersThree, Campfire] as const;
-const contactEmail = 'idilazaovinskogjezera@gmail.com';
-const contactPhone = '+38169632641';
 
 function initialLanguage(): Language {
   const urlLanguage = new URLSearchParams(window.location.search).get('lang');
@@ -257,8 +235,9 @@ export function IdilaPage() {
         } else menuButtonRef.current?.focus();
       });
     };
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) finish();
-    else { setMenuClosing(true); menuTimer.current = setTimeout(finish, 540); }
+    const duration = menuExitDuration();
+    if (duration === 0) finish();
+    else { setMenuClosing(true); menuTimer.current = setTimeout(finish, duration); }
   };
 
   const movePhoto = (direction: -1 | 1) => {
@@ -270,15 +249,15 @@ export function IdilaPage() {
 
     <header className={`idila-header${scrolled ? ' is-compact' : ''}`}>
       <div className="idila-header__inner">
-        <a className="idila-brand" href="#idila-top" aria-label="Idila Zaovinskog jezera">
+        <a className="idila-brand" href="#idila-top" aria-label="Vila Borika">
           <Mountains size={48} weight="thin" aria-hidden="true" />
-          <span><b>IDILA</b><small>ZAOVINSKOG JEZERA</small></span>
+          <span><b>VILA BORIKA</b><small>MOUNTAIN STAYS</small></span>
         </a>
         <div className="idila-header__properties"><PropertyLinks current="idila" lang={lang} /></div>
         <nav className="idila-nav" aria-label={lang === 'sr' ? 'Glavna navigacija' : 'Main navigation'}>
           {t.nav.map((label, index) => <a key={label} href={`#${['house', 'gallery', 'tara'][index]}`}>{label}</a>)}
         </nav>
-        <a className="idila-header__cta" href={`mailto:${contactEmail}`}>{t.inquiry}</a>
+        <a className="idila-header__cta" href="#gallery">{t.inquiry}</a>
         <div className="idila-languages" aria-label={t.language}>
           {(['sr', 'en'] as const).map((language) => <button key={language} type="button" aria-pressed={lang === language} onClick={() => changeLanguage(language)}>{language.toUpperCase()}</button>)}
         </div>
@@ -293,7 +272,7 @@ export function IdilaPage() {
         <div className="idila-mobile-menu__top">
           <a className="idila-brand" href="#idila-top" onClick={e => { e.preventDefault(); closeMenu('idila-top'); }}>
             <Mountains size={42} weight="thin" aria-hidden="true" />
-            <span><b>IDILA</b><small>ZAOVINSKOG JEZERA</small></span>
+            <span><b>VILA BORIKA</b><small>MOUNTAIN STAYS</small></span>
           </a>
           <button type="button" className="idila-mobile-menu__close" aria-label={t.close} onClick={() => closeMenu()} autoFocus><X size={27} aria-hidden="true" /></button>
         </div>
@@ -305,7 +284,7 @@ export function IdilaPage() {
           <div className="idila-languages" aria-label={t.language}>
             {(['sr', 'en'] as const).map((language) => <button key={language} type="button" aria-pressed={lang === language} onClick={() => changeLanguage(language)}>{language.toUpperCase()}</button>)}
           </div>
-          <a className="idila-button" href={`mailto:${contactEmail}`}>{t.inquiry}<ArrowRight size={18} aria-hidden="true" /></a>
+          <a className="idila-button" href="#gallery" onClick={e => { e.preventDefault(); closeMenu('gallery'); }}>{t.inquiry}<ArrowRight size={18} aria-hidden="true" /></a>
         </div>
       </div>
     </Modal>
@@ -316,12 +295,12 @@ export function IdilaPage() {
           <p className="idila-eyebrow">{t.place}</p>
           <h1 id="idila-hero-title" data-reveal>{t.heroTitle}</h1>
           <span className="idila-rule" aria-hidden="true" />
-          <p className="idila-hero__text" data-reveal data-reveal-delay="120">{t.heroText}</p>
-          <a className="idila-button" href={`mailto:${contactEmail}`}>{t.inquiry}<ArrowRight size={20} aria-hidden="true" /></a>
+          <p className="idila-hero__text" data-reveal data-reveal-delay="50">{t.heroText}</p>
+          <a className="idila-button" href="#gallery">{t.inquiry}<ArrowRight size={20} aria-hidden="true" /></a>
           <div className="idila-hero__signature" aria-hidden="true"><Mountains size={62} weight="thin" /><span>{lang === 'sr' ? 'PLANINE POVEZUJU LJUDE' : 'MOUNTAINS BRING PEOPLE TOGETHER'}</span></div>
         </div>
         <figure className="idila-hero__visual">
-          <img src="/images/idila/hero-clean.jpg" alt={t.images[0]} width="1449" height="1085" fetchPriority="high" />
+          <img src="/images/borika/exterior.webp" alt={t.images[0]} width="1536" height="1024" fetchPriority="high" />
           <figcaption>{lang === 'sr' ? <>Više<br/><em>od odmora.</em></> : <>More<br/><em>than a stay.</em></>}</figcaption>
         </figure>
       </section>
@@ -342,11 +321,11 @@ export function IdilaPage() {
           <em>{t.storyCaption}</em>
         </div>
         <figure className="idila-story__image idila-story__image--tall">
-          <img src="/images/idila/interior-clean.jpg" alt={t.images[1]} width="1448" height="1086" loading="lazy" />
+          <img src="/images/borika/living.webp" alt={t.images[1]} width="1536" height="1024" loading="lazy" />
           <figcaption>{t.imageNotes[0]}</figcaption>
         </figure>
         <figure className="idila-story__image idila-story__image--wide">
-          <img src="/images/idila/terrace-clean.jpg" alt={t.images[2]} width="1254" height="1254" loading="lazy" />
+          <img src="/images/borika/terrace.webp" alt={t.images[2]} width="1536" height="1024" loading="lazy" />
           <figcaption>{t.imageNotes[1]}</figcaption>
         </figure>
       </section>
@@ -368,7 +347,7 @@ export function IdilaPage() {
         {activePhoto !== null && <div className="idila-lightbox__content">
           <button type="button" className="idila-lightbox__close" aria-label={t.closePhoto} onClick={() => setActivePhoto(null)} autoFocus><X size={28} aria-hidden="true" /></button>
           <figure>
-            <img src={galleryImages[activePhoto]} alt={t.images[activePhoto]} width={gallerySizes[activePhoto][0]} height={gallerySizes[activePhoto][1]} />
+            <PhotoTransition src={galleryImages[activePhoto]} alt={t.images[activePhoto]} width={gallerySizes[activePhoto][0]} height={gallerySizes[activePhoto][1]} />
             <figcaption><span>{t.images[activePhoto]}</span><span aria-live="polite">{activePhoto + 1} / {galleryImages.length}</span></figcaption>
           </figure>
           <div className="idila-lightbox__controls">
@@ -379,37 +358,35 @@ export function IdilaPage() {
       </Modal>
 
       <section className="idila-location" id="tara" aria-labelledby="idila-location-title">
-        <figure><img src="/images/idila/exterior-clean.jpg" alt={t.images[0]} width="1448" height="1086" loading="lazy" /></figure>
+        <figure><img src="/images/borika/exterior.webp" alt={t.images[0]} width="1536" height="1024" loading="lazy" /></figure>
         <div className="idila-location__copy" data-reveal>
           <p className="idila-eyebrow">{t.taraEyebrow}</p>
           <h2 id="idila-location-title">{t.taraTitle}</h2>
           <p>{t.taraText}</p>
-          <div className="idila-distance"><MapPin size={31} weight="thin" aria-hidden="true" /><span><small>{t.distanceLabel}</small><b>{t.distanceValue}</b><em>{t.distanceNote}</em></span></div>
-          <a className="idila-text-link" href="https://maps.app.goo.gl/8xHbiki4JXTxTb2p9" target="_blank" rel="noopener noreferrer">{t.map}<ArrowRight size={18} aria-hidden="true" /></a>
+          <a className="idila-text-link" href="#gallery">{t.inquiry}<ArrowRight size={18} aria-hidden="true" /></a>
         </div>
       </section>
 
       <section className="idila-video" aria-labelledby="idila-video-title">
-        <img src="/images/idila/exterior-clean.jpg" alt="" width="1448" height="1086" loading="lazy" />
+        <img src="/images/borika/exterior.webp" alt="" width="1536" height="1024" loading="lazy" />
         <div className="idila-video__shade" />
         <div className="idila-video__copy" data-reveal>
           <p className="idila-eyebrow">{t.videoEyebrow}</p>
           <h2 id="idila-video-title">{t.videoTitle}</h2>
-          <a href="https://www.youtube.com/watch?v=AndruFi-TB4" target="_blank" rel="noopener noreferrer"><span>{t.videoAction}</span><b><Play size={25} weight="fill" aria-hidden="true" /></b></a>
+          <a href="#gallery"><span>{t.videoAction}</span><b><ArrowRight size={25} aria-hidden="true" /></b></a>
         </div>
       </section>
 
       <section className="idila-contact" aria-labelledby="idila-contact-title">
         <div><p className="idila-eyebrow">{t.contactEyebrow}</p><h2 id="idila-contact-title">{t.contactTitle}</h2><p>{t.contactText}</p></div>
         <div className="idila-contact__actions">
-          <a href={`tel:${contactPhone}`}><Phone size={21} weight="thin" aria-hidden="true" /><span><small>{t.call}</small>+381 69 632 641</span></a>
-          <a href={`mailto:${contactEmail}`}><EnvelopeSimple size={21} weight="thin" aria-hidden="true" /><span><small>{t.email}</small>{contactEmail}</span></a>
+          <a href="#gallery"><ArrowRight size={21} aria-hidden="true" /><span>{t.inquiry}</span></a>
         </div>
       </section>
     </main>
 
     <footer className="idila-footer">
-      <a className="idila-brand" href="#idila-top"><span><b>IDILA</b><small>ZAOVINSKOG JEZERA</small></span></a>
+      <a className="idila-brand" href="#idila-top"><span><b>VILA BORIKA</b><small>MOUNTAIN STAYS</small></span></a>
       <p>{t.footerPlace}<br/>{lang === 'sr' ? 'Priroda. Ljudi. Bolji dani.' : 'Nature. People. Better days.'}</p>
       <PropertyLinks current="idila" lang={lang} />
     </footer>

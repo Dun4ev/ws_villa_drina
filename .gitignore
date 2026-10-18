@@ -9,3 +9,16 @@ dist/
 
 # Local visual verification captures
 site/qa/
+
+# Local Netlify folder
+.netlify
+
+.playwright-cli/
+
+output/playwright/
+
+# Local source archives and generated intermediates
+/references/private-archive/
+/references/generated/
+/graphify-out/
+.wrangler/

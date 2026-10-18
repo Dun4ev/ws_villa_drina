@@ -18,23 +18,14 @@
 .idila-mobile-menu__panel{position:relative;isolation:isolate}
 .idila-mobile-menu__panel::before{content:'';position:absolute;z-index:-1;right:calc(100% - 1px);top:0;width:100px;height:100%;background:var(--idila-paper);border-radius:100% 0 0 100%;transform-origin:right center;transform:scaleX(0)}
 @media(prefers-reduced-motion:no-preference){
- .idila-hero__visual img{animation:luxury-hero-settle 1400ms cubic-bezier(.22,1,.36,1) both}
- .idila-mobile-menu[open]::backdrop{animation:menu-backdrop-in 540ms ease both}
- .idila-mobile-menu[open] .idila-mobile-menu__panel{animation:menu-slide-in 650ms cubic-bezier(.76,0,.24,1) both}
- .idila-mobile-menu[open] .idila-mobile-menu__panel::before{animation:menu-curve-in 750ms cubic-bezier(.76,0,.24,1) both}
- .idila-mobile-menu[open] nav a{animation:menu-link-in 550ms cubic-bezier(.22,1,.36,1) both;animation-delay:160ms}
- .idila-mobile-menu[open] nav a:nth-child(2){animation-delay:215ms}
- .idila-mobile-menu[open] nav a:nth-child(3){animation-delay:270ms}
- .idila-mobile-menu.is-closing .idila-mobile-menu__panel{animation:menu-slide-out 540ms cubic-bezier(.76,0,.24,1) both}
- .idila-mobile-menu.is-closing .idila-mobile-menu__panel::before{animation:menu-curve-out 540ms cubic-bezier(.76,0,.24,1) both}
- .idila-mobile-menu.is-closing::backdrop{animation:menu-backdrop-out 540ms ease both}
+ .idila-hero__visual img{animation:luxury-hero-settle 1000ms var(--ease-out) both}
 }
 @media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
- .idila-story__image img,.idila-gallery__item img,.idila-location>figure img{transition:transform 700ms cubic-bezier(.22,1,.36,1)}
- .idila-story__image:hover img,.idila-gallery__item:hover img,.idila-location>figure:hover img{transform:scale(1.025)}
- .idila-button svg,.idila-text-link svg{transition:transform 250ms cubic-bezier(.22,1,.36,1)}
+ .idila-story__image img,.idila-gallery__item img,.idila-location>figure img{transition:transform var(--motion-hover) ease}
+ .idila-story__image:hover img,.idila-gallery__item:hover img,.idila-location>figure:hover img{transform:scale(1.015)}
+ .idila-button svg,.idila-text-link svg{transition:transform var(--motion-fast) ease}
  .idila-button:hover svg,.idila-text-link:hover svg{transform:translateX(2px)}
 }
 @media(max-width:1180px){.idila-page{--idila-header-height:85px}.idila-page .idila-header.is-compact{height:48px}.idila-header.is-compact .idila-menu-button{height:44px;width:44px}}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.idila-header::before{background:#242820f5}}
-@media(prefers-reduced-motion:reduce){.idila-page *, .idila-page *::before,.idila-page *::after{animation:none!important;transition:none!important}.idila-mobile-menu__panel::before{transform:scaleX(0)}}
+@media(prefers-reduced-motion:reduce){.idila-hero__visual img{animation:none!important}.idila-header,.idila-header .idila-brand b,.idila-header .idila-brand svg,.idila-header .idila-brand small{transition:none!important}.idila-mobile-menu__panel::before{transform:scaleX(0)}}
